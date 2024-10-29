@@ -305,6 +305,11 @@ $mont_alpha = $amtinwords . $mont_alpha . " " . $amtinword;
 					</td>
 
 				</tr>
+				<tr>
+				<td width='100%' style="font-style: italic;">
+						<center><b>Best of luck for future</b></center>
+					</td>
+				</tr>
 			</table>
 		</div>
 		<div class='row sign'>

@@ -3,12 +3,12 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Neev Play School Admission Form</title>
+	<title>Neev Play School Enquiry Form</title>
 	<!-- Bootstrap CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-
 	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&display=swap');
+
 		.form-label {
 			font-size: 16px;
 			font-weight: 700;
@@ -21,6 +21,9 @@
 
 		body {
 			background-color: #b3d4fc;
+			font-family: "Playwrite GB S", cursive;
+			font-optical-sizing: auto;
+
 		}
 
 		.card-header {
@@ -58,9 +61,9 @@
 					<p><?php echo $school_setting[0]->School_Address; ?></p>
 				</div>
 				<div class="card-body">
-					<h4 class="card-title text-center">ADMISSION FORM</h4>
+					<h4 class="card-title text-center">ENQUIRY FORM</h4>
 					<div class="container-sm mt-5">
-						<form id='adm_form'  method="POST" action="<?php echo base_url('Admission_registar/save_admission_form'); ?>">
+						<form id='adm_form' method="POST" action="<?php echo base_url('Admission_registar/save_admission_form'); ?>">
 							<div class="mb-3">
 								<label for="childName" class="form-label">Applicant's Name</label>
 								<input type="text" autocapitalize='on' class="form-control" id="childName" name='childName' placeholder="Enter child's name" required>
@@ -85,20 +88,19 @@
 								<label for="email" class="form-label">E-mail Id</label>
 								<input type="email" class="form-control" id="email" name='email' placeholder="Enter Email Id" required>
 							</div>
+							<? // rowhit 
+							?>
+							<div class="mb-3">
+								<label for="dob" class="form-label">Date of Birth</label>
+								<input type="date" class="form-control" id="dob" name='dob' onchange="updateClassOptions()" required>
+							</div>
 							<div class="mb-3">
 								<label for="class" class="form-label">Class Applying For</label>
 								<select class="form-select" id="classs" name='classs' required>
 									<option value="">Select Class</option>
-									<?php
-									foreach ($class as $cls) {
-									?>
-										<option value="<?php echo $cls->CLASS_NM ?>"><?php echo $cls->CLASS_NM ?></option>
-									<?php }
-
-									?>
 								</select>
 							</div>
-							
+
 							<div class="mb-3">
 								<label for="paddress" class="form-label">Permanent Address</label>
 								<textarea class="form-control" id="paddress" name='paddress' rows="3" placeholder="Enter address" required></textarea>
@@ -127,40 +129,71 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </body>
 <script>
+	//rowhit
+	function updateClassOptions() {
+		const dobInput = document.getElementById('dob');
+		const classSelect = document.getElementById('classs');
+		const dob = new Date(dobInput.value);
+		if (isNaN(dob)) {
+			alert("Please enter a valid date.");
+			return; 
+		}
+		const today = new Date();
+		const age = today.getFullYear() - dob.getFullYear();
+		const monthDiff = today.getMonth() - dob.getMonth();
+
+		if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+			age--;
+		}
+
+		classSelect.innerHTML = '<option value="">Select Class</option>';
+		if (age < 2) {
+			classSelect.innerHTML += '<option value="Mother Toddler">Mother Toddler</option>';
+		} else if (age >= 2 && age < 3) {
+			classSelect.innerHTML += '<option value="Toddler">Toddler</option>';
+		} else if (age >= 3 && age < 4) {
+			classSelect.innerHTML += '<option value="Nursery">Nursery</option>';
+		} else if (age >= 4 && age < 5) {
+			classSelect.innerHTML += '<option value="UKG">UKG</option>';
+		} else if (age >= 5 && age < 6) {
+			classSelect.innerHTML += '<option value="Prep/Sr.KG">Prep/Sr.KG</option>';
+		}
+	}
+	
 	$("#adm_form").on("submit", function(event) {
-		event.preventDefault();
-		$.ajax({
-			url: "<?php echo base_url('Admission_registar/save_admission_form'); ?>",
-			type: "POST",
-			data: $('#adm_form').serialize(),
-			success: function(data) {
-				if (data == 1) {
-					Swal.fire({
-						title: "Thank You for Your Response!",
-						html: "You'll be contacted within 24-48 hrs.",
-						timer: 10000,
-						timerProgressBar: true,
-						didOpen: () => {
-							Swal.showLoading();
-							const timer = Swal.getPopup().querySelector("b");
-							timerInterval = setInterval(() => {
-								timer.textContent = `${Swal.getTimerLeft()}`;
-							}, 100);
-						},
-						willClose: () => {
-							clearInterval(timerInterval);
-							window.location.href = 'http://neevastrongfoundation.org';
-						},
-					}).then((result) => {
-						/* Read more about handling dismissals below */
-						if (result.dismiss === Swal.DismissReason.timer) {
-							window.location.href = 'http://neevastrongfoundation.org';
-						}
-					});
-				}
-			},
-		});
-	});
+    event.preventDefault();
+
+    $.ajax({
+        url: "<?php echo base_url('Admission_registar/save_admission_form'); ?>",
+        type: "POST",
+        data: $('#adm_form').serialize(),
+        dataType: 'json', 
+        success: function(data) {
+            console.log("Response from server: ", data); 
+            if (data.status === 1) { 
+                Swal.fire({
+                    title: "Thank You for Your Response!",
+                    html: data.message, 
+                    timer: 10000,
+                    timerProgressBar: true,
+                    didOpen: () => {
+                        Swal.showLoading();
+                    },
+                    willClose: () => {
+                        window.location.href = 'http://neevastrongfoundation.org';
+                    },
+                });
+            } else {
+                alert("Error: " + data.message); 
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error("AJAX Error: ", status, error);
+            alert("An error occurred. Please try again.");
+        }
+    });
+});
+
 </script>
 
 </html>

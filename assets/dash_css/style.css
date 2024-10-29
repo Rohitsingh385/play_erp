@@ -80,11 +80,11 @@ li.breadcrumb-item i.fa.fa-angle-right {
   -moz-transition: all 0.3s ease;
   transition: all 0.3s ease;
 	float: right;
-    width:87%;
+    width:100%;
 	padding: 0 2em;
 }
  .left-content {
-    width:87%;
+    width:100%;
 	padding: 0 3em;
 }
 .page-container.sidebar-collapsed .sidebar-menu {

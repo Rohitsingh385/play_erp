@@ -56,7 +56,7 @@
 
 					} else {
 					?>
-						<img src="<?php echo base_url($value->STUDENT_IMAGE); ?>" style="height: auto; width: 50%;">
+						<img src="<?php  echo base_url('assets/student_photo/default.jpg'); ?>" style="height: auto; width: 50%;">
 					<?php
 
 					}

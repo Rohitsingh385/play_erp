@@ -44,6 +44,7 @@ class Student_details extends MY_Controller
 	}
 	public function add_student()
 	{
+
 		$class = $this->dbcon->select('classes', '*');
 		$section = $this->dbcon->select('sections', '*');
 		$category = $this->dbcon->select('category', '*');
@@ -52,7 +53,7 @@ class Student_details extends MY_Controller
 		$stopage = $this->dbcon->select('stoppage', '*');
 		$religion = $this->dbcon->select('religion', '*');
 		$subject = $this->dbcon->select('subjects', '*');
-		$adm_no = $this->dbcon->select('adm_no', '*');
+		$adm_no = $this->dbcon->select('adm_no', '*'); //db changed
 		$array = array(
 			'class' => $class,
 			'section' => $section,
@@ -64,6 +65,8 @@ class Student_details extends MY_Controller
 			'subject' => $subject,
 			'admission' => $adm_no
 		);
+		// echo '<pre>';print_r($array);
+
 		$this->fee_template('student_details/add_new_student', $array);
 	}
 	public function stopage()
@@ -79,6 +82,7 @@ class Student_details extends MY_Controller
 
 	public function add_record()
 	{
+
 		$fname      = $this->input->post('sfn');
 		$full_name  = $fname;
 		$FREESHIP   = $this->input->post('radio3');
@@ -91,6 +95,20 @@ class Student_details extends MY_Controller
 		$pf = 'F';
 		$pm = 'M';
 		$nation = 'INDIA';
+
+		//rowhit
+		$current_year = date('Y');
+		$academic_year = date('y') . (date('y') + 1);
+		$last_adm_no = $this->dbcon->select('student', 'ADM_NO', "ADM_NO LIKE '$academic_year%' ORDER BY ADM_NO DESC LIMIT 1");
+		if ($last_adm_no) {
+			$last_student_no = intval(substr($last_adm_no[0]->ADM_NO, -3)); // Get the last 3 digits and convert to integer
+			$next_student_no = str_pad($last_student_no + 1, 3, '0', STR_PAD_LEFT); // Increment and pad with zeros
+		} else {
+			$next_student_no = '001'; // Start from 001 if no records exist
+		}
+		$adm_no = $academic_year . $next_student_no;
+
+
 
 		if ($FREESHIP == 1) {
 			$FREESHIP_letterno = strtoupper($this->input->post('freeship'));
@@ -128,9 +146,10 @@ class Student_details extends MY_Controller
 		$section_name = $section[0]->SECTION_NAME;
 		//ending fetch data from the back end of the table
 		//geting data from adm_no tables
-		$get_adm = $this->dbcon->select('adm_no', '*');
+		//	$get_adm = $this->dbcon->select('adm_no', '*');
 		/*$get_adm = $this->dbcon->select('adm_no','*',"adm_no='$adm_no'");*/
-		$dft = $get_adm[0]->adm_no;
+		//$dft = $get_adm[0]->adm_no;
+		// echo $dft;die;
 		// ending fetch data from adm_no tables
 		//================CHECKING ADMISSION IN MID SESSION==================//
 		$adm_mid_ses = $this->input->post('midses');
@@ -190,6 +209,7 @@ class Student_details extends MY_Controller
 		$session_year = $session_master[0]->Session_Year;
 		// $datas = $this->upload->data();
 		// $image = 'assets/student_photo/'.$datas['orig_name'];
+
 		$student_details = array(
 			'STUDENTID'     => $std_id,
 			'ADM_DATE'      => $this->input->post('std_adm_date'),

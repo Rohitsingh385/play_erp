@@ -67,6 +67,7 @@ class Student_report extends MY_Controller{
 		$data['class'] = $class;
 		$data['sec'] = $sec;
 		$data['short_by'] = $sec;
+		// echo '<pre>';print_r($data);die;
 		if(!empty($data['data'])){
 			$this->load->view('student_report/studentdetailsshow',$data);
 		}

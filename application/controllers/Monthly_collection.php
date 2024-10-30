@@ -281,11 +281,6 @@ class Monthly_collection extends MY_controller{
 		if($mar_check == 1){
 			$month_app[] = 'MAR';
 		}
-
-		
-
-
-
 		$array = array(
 			'student_data' => $stu_data,
 			'master' => $master,

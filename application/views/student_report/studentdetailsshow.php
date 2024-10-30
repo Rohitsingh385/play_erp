@@ -43,18 +43,20 @@
 		<?php
 		$i = 1;
 		foreach ($data as $key => $value) {
+			// echo '<pre>';
+			// print_r($value);die;
 		?>
 			<tr>
 				<td><?php echo $i; ?></td>
 				<td><?php
-					if ($STUDENT_IMAGE != '') {
+					if ($value->STUDENT_IMAGE != '') {
 					?>
-						<img class="img-thumbnail" style="border:1.5px solid #09b1cc;" src="<?php echo base_url($STUDENT_IMAGE); ?>" style="height:50px; width:80px;">
+						<img class="img-thumbnail" style="border:1.5px solid #09b1cc;" src="<?php echo base_url($value->STUDENT_IMAGE ); ?>" style="height:50px; width:80px;">
 					<?php
 
 					} else {
 					?>
-						<img src="<?php echo base_url('assets/student_photo/default.jpg'); ?>" style="height: auto; width: 50%;">
+						<img src="<?php echo base_url($value->STUDENT_IMAGE); ?>" style="height: auto; width: 50%;">
 					<?php
 
 					}

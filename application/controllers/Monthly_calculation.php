@@ -48,7 +48,7 @@ class Monthly_calculation extends MY_Controller
 			$last_value = 12;
 		}
 
-		echo $last_value;die;
+		// echo $last_value;die;
 
 		//fetching data from the data base//
 		$student_data = $this->farheen->select('student', '*', "ADM_NO='$adm_no'");
@@ -59,7 +59,7 @@ class Monthly_calculation extends MY_Controller
 
 
 		if (isset($student_data)) {
-			$admission_no = $student_data[0]->ADM_NO;
+			$admission_no = $student_data[0]->adm_no;
 			$emp_ward     = $student_data[0]->EMP_WARD;
 			$class        = $student_data[0]->CLASS;
 			$hostel       = $student_data[0]->HOSTEL;
@@ -72,6 +72,11 @@ class Monthly_calculation extends MY_Controller
 			@$adm_status   = $student_data[0]->mid_session_admisson_status;
 			$Admission_month = $student_data[0]->Admission_month;
 		}
+
+		// echo $$admission_no;
+		// echo '<pre>';
+		// print_r($student_data);
+		// die;
 
 		if (isset($session)) {
 			$Session_ID = $session[0]->Session_ID;
@@ -89,7 +94,7 @@ class Monthly_calculation extends MY_Controller
 		$h_fee = 0;
 		$t = 0;
 		$total_amt = 0;
-		$final_amount = array();
+		//$final_amount = array();
 
 
 
@@ -198,7 +203,9 @@ class Monthly_calculation extends MY_Controller
 									$h_fee = $bus_fee[0]->BUSAMOUNT;
 								} elseif ($HType[$i] == 'SCIENCE') {
 									$h_fee = ($amt_fee * $science);
-								} elseif ($HType[$i] == 'LATEFINE') {
+								} 
+								
+								elseif ($HType[$i] == 'LATEFINE') {
 
 									$late_fine = $this->farheen->selectSingleData('latefine_master', '*', "ID='1'");
 									$l_status = $late_fine->status;
@@ -235,10 +242,10 @@ class Monthly_calculation extends MY_Controller
 									}
 
 									$diff = $current_month - $m;
-
+									echo 'hioe';$diff;die;
 									if ($l_status == 1) {
 
-										if ($diff < 0) {
+										if ($diff > 0) {
 
 											$late_fee = $l_late_amount;
 										} elseif ($diff = 0) {
@@ -257,7 +264,9 @@ class Monthly_calculation extends MY_Controller
 									} else {
 										$h_fee = 0;
 									}
-								} elseif ($HType[$i] == 'HOSTEL') {
+								} 
+								
+								elseif ($HType[$i] == 'HOSTEL') {
 									$h_fee = 0;
 								}
 								if ($h_fee > 0) {
@@ -283,8 +292,68 @@ class Monthly_calculation extends MY_Controller
 									$h_fee = $bus_fee[0]->BUSAMOUNT;
 								} elseif ($HType[$i] == 'SCIENCE') {
 									$h_fee = $amt_fee * $science;
-								} elseif ($HType[$i] == 'LATEFINE') {
-								} elseif ($HType[$i] == 'BOOK') {
+								}
+								
+								elseif ($HType[$i] == 'LATEFINE') {
+
+									$late_fine = $this->farheen->selectSingleData('latefine_master', '*', "ID='1'");
+									$l_status = $late_fine->status;
+									$l_collection_mode = $late_fine->collection_mode;
+									$l_month_applied = $late_fine->month_applied;
+									$l_date_applied = $late_fine->date_applied;
+									$l_late_amount = $late_fine->late_amount;
+									$current_month = date('m');
+									$sys_date = date('d');
+									if ($month == 1) {
+										$m = 4;
+									} elseif ($month == 2) {
+										$m = 5;
+									} elseif ($month == 3) {
+										$m = 6;
+									} elseif ($month == 4) {
+										$m = 7;
+									} elseif ($month == 5) {
+										$m = 8;
+									} elseif ($month == 6) {
+										$m = 9;
+									} elseif ($month == 7) {
+										$m = 10;
+									} elseif ($month == 8) {
+										$m = 11;
+									} elseif ($month == 9) {
+										$m = 12;
+									} elseif ($month == 10) {
+										$m = 1;
+									} elseif ($month == 11) {
+										$m = 2;
+									} elseif ($month == 12) {
+										$m = 3;
+									}
+
+									$diff = $current_month - $m;
+									echo 'hioe';$diff;die;
+									if ($l_status == 1) {
+
+										if ($diff > 0) {
+
+											$late_fee = $l_late_amount;
+										} elseif ($diff = 0) {
+
+											if ($l_date_applied <= $sys_date) {
+												$late_fee = $l_late_amount;
+											} else {
+												$late_fee = 0;
+											}
+										} else {
+
+											$late_fee = 0;
+										}
+
+										$h_fee = $late_fee;
+									} else {
+										$h_fee = 0;
+									}
+								}  elseif ($HType[$i] == 'BOOK') {
 									$h_fee = 0;
 								} elseif ($HType[$i] == 'DUES') {
 									$h_fee = 0;
@@ -376,7 +445,7 @@ class Monthly_calculation extends MY_Controller
 
 									if ($l_status == 1) {
 
-										if ($diff < 0) {
+										if ($diff > 0) {
 
 											$late_fee = $l_late_amount;
 										} elseif ($diff = 0) {
@@ -531,7 +600,7 @@ class Monthly_calculation extends MY_Controller
 
 								if ($l_status == 1) {
 
-									if ($diff < 0) {
+									if ($diff > 0) {
 
 										$late_fee = $l_late_amount;
 									} elseif ($diff = 0) {
@@ -625,7 +694,7 @@ class Monthly_calculation extends MY_Controller
 
 								if ($l_status == 1) {
 
-									if ($diff < 0) {
+									if ($diff > 0) {
 
 										$late_fee = $l_late_amount;
 									} elseif ($diff = 0) {
@@ -742,7 +811,7 @@ class Monthly_calculation extends MY_Controller
 
 								if ($l_status == 1) {
 
-									if ($diff < 0) {
+									if ($diff > 0) {
 
 										$late_fee = $l_late_amount;
 									} elseif ($diff = 0) {
@@ -774,7 +843,8 @@ class Monthly_calculation extends MY_Controller
 								}
 							}
 						} else {
-
+							// echo $HType[$i] ;
+							// echo 'sdfsd';die;
 							//Non Scholarship 
 							if ($HType[$i] == 'No') {
 								if ($Session_Year == $SESSIONID) {
@@ -826,11 +896,11 @@ class Monthly_calculation extends MY_Controller
 								} elseif ($month == 9) {
 									$m = 12;
 								} elseif ($month == 10) {
-									$m = 1;
+									$m = 13;
 								} elseif ($month == 11) {
-									$m = 2;
+									$m = 14;
 								} elseif ($month == 12) {
-									$m = 3;
+									$m = 15;
 								}
 
 								$diff = $current_month - $m;
@@ -872,6 +942,7 @@ class Monthly_calculation extends MY_Controller
 					$final_amount[$i] = $t + $h_fee;
 				}
 			}
+			// die;
 		}
 
 		for ($i = 1; $i <= 25; $i++) {
@@ -908,7 +979,9 @@ class Monthly_calculation extends MY_Controller
 		$tot_amt24 = ($final_amount[24] - $data['totFee24']);
 		$tot_amt25 = ($final_amount[25] - $data['totFee25']);
 
-		$total_amount = (($tot_amt1 < 0) ? 0 : $tot_amt1) + (($tot_amt2 < 0) ? 0 : $tot_amt2) + (($tot_amt3 < 0) ? 0 : $tot_amt3) + (($tot_amt4 < 0) ? 0 : $tot_amt4) + (($tot_amt5 < 0) ? 0 : $tot_amt5) + (($tot_amt6 < 0) ? 0 : $tot_amt6) + (($tot_amt7 < 0) ? 0 : $tot_amt7) + (($tot_amt8 < 0) ? 0 : $tot_amt8) + (($tot_amt9 < 0) ? 0 : $tot_amt9) + (($tot_amt10 < 0) ? 0 : $tot_amt10) + (($tot_amt11 < 0) ? 0 : $tot_amt11) + (($tot_amt12 < 0) ? 0 : $tot_amt12) + (($tot_amt13 < 0) ? 0 : $tot_amt13) + (($tot_amt14 < 0) ? 0 : $tot_amt14) + (($tot_amt15 < 0) ? 0 : $tot_amt15) + (($tot_amt16 < 0) ? 0 : $tot_amt16) + (($tot_amt17 < 0) ? 0 : $tot_amt17) + (($tot_amt18 < 0) ? 0 : $tot_amt18) + (($tot_amt19 < 0) ? 0 : $tot_amt19) + (($tot_amt20 < 0) ? 0 : $tot_amt20) + (($tot_amt21 < 0) ? 0 : $tot_amt21) + (($tot_amt22 < 0) ? 0 : $tot_amt22) + (($tot_amt23 < 0) ? 0 : $tot_amt23) + (($tot_amt24 < 0) ? 0 : $tot_amt24) + (($tot_amt25 < 0) ? 0 : $tot_amt25);
+		// $total_amount = (($tot_amt1 < 0) ? 0 : $tot_amt1) + (($tot_amt2 < 0) ? 0 : $tot_amt2) + (($tot_amt3 < 0) ? 0 : $tot_amt3) + (($tot_amt4 < 0) ? 0 : $tot_amt4) + (($tot_amt5 < 0) ? 0 : $tot_amt5) + (($tot_amt6 < 0) ? 0 : $tot_amt6) + (($tot_amt7 < 0) ? 0 : $tot_amt7) + (($tot_amt8 < 0) ? 0 : $tot_amt8) + (($tot_amt9 < 0) ? 0 : $tot_amt9) + (($tot_amt10 < 0) ? 0 : $tot_amt10) + (($tot_amt11 < 0) ? 0 : $tot_amt11) + (($tot_amt12 < 0) ? 0 : $tot_amt12) + (($tot_amt13 < 0) ? 0 : $tot_amt13) + (($tot_amt14 < 0) ? 0 : $tot_amt14) + (($tot_amt15 < 0) ? 0 : $tot_amt15) + (($tot_amt16 < 0) ? 0 : $tot_amt16) + (($tot_amt17 < 0) ? 0 : $tot_amt17) + (($tot_amt18 < 0) ? 0 : $tot_amt18) + (($tot_amt19 < 0) ? 0 : $tot_amt19) + (($tot_amt20 < 0) ? 0 : $tot_amt20) + (($tot_amt21 < 0) ? 0 : $tot_amt21) + (($tot_amt22 < 0) ? 0 : $tot_amt22) + (($tot_amt23 < 0) ? 0 : $tot_amt23) + (($tot_amt24 < 0) ? 0 : $tot_amt24) + (($tot_amt25 < 0) ? 0 : $tot_amt25);
+
+		$total_amount = (($tot_amt1 < 0) ? 0 : $tot_amt1) + (($tot_amt2 < 0) ? 0 : $tot_amt2) + (($tot_amt3 < 0) ? 0 : $tot_amt3) + (($tot_amt4 < 0) ? 0 : $tot_amt4) + (($tot_amt5 < 0) ? 0 : $tot_amt5) + (($tot_amt6 < 0) ? 0 : $tot_amt6) + (($tot_amt7 < 0) ? 0 : $tot_amt7) ;
 
 
 		$array = array(

@@ -11,6 +11,10 @@ class Monthly_payment extends MY_controller
 	}
 	public function monthly_pay_details()
 	{
+		// echo '<pre>';
+		// print_r($_POST);
+		// die;
+
 		$adm_no    		= $this->input->post('adm_no');
 		$rect_date = date('Y-m-d', strtotime($this->input->post('rcpt_date')));
 		// $curr_date = date('Y-m-d');
@@ -197,6 +201,7 @@ class Monthly_payment extends MY_controller
 			}
 
 			$this->dbcon->update('student', $upd_stu, "ADM_NO='$adm_no'");
+			echo $this->db->last_query();die;
 		}
 	}
 

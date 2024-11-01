@@ -1,7 +1,7 @@
 <?php
 	if(isset($student_data))
 	{
-		$admission_no = $student_data[0]->ADM_NO;
+		$admission_no = $student_data[0]->adm_no;
 		$emp_ward = $student_data[0]->EMP_WARD;
 		$class = $student_data[0]->CLASS;
 		$hostel = $student_data[0]->HOSTEL;
@@ -890,11 +890,11 @@ $("#form_data").on("submit",function(event){
 		url: "<?php echo base_url('Monthly_payment/monthly_pay_details'); ?>",
 		type: "POST",
 		data: $("#form_data").serialize()+"&ffm="+ffm,
-		success: function(data){
+		// success: function(data){
 			
-				window.location="<?php echo base_url('Monthly_payment/payment_rec_gen'); ?>";
-			    $('#myModal').modal('hide');
-		}
+		// 		window.location="<?php echo base_url('Monthly_payment/payment_rec_gen'); ?>";
+		// 	    $('#myModal').modal('hide');
+		// }
 	});
 });
 </script>

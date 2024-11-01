@@ -48,7 +48,7 @@ class Monthly_calculation extends MY_Controller
 			$last_value = 12;
 		}
 
-		// echo $last_value;die;
+		echo $last_value;die;
 
 		//fetching data from the data base//
 		$student_data = $this->farheen->select('student', '*', "ADM_NO='$adm_no'");
@@ -91,9 +91,9 @@ class Monthly_calculation extends MY_Controller
 		$total_amt = 0;
 		$final_amount = array();
 
-		
 
-		for ($x = 1 ; $x <= $last_value; $x++) {
+
+		for ($x = 1; $x <= $last_value; $x++) {
 			if (in_array($x, $this->partial_freeship($admission_no))) {
 				$month = $x;
 				$temp = $month;
@@ -145,11 +145,11 @@ class Monthly_calculation extends MY_Controller
 
 				if ($monthly[$i] == 1) // calculation on the basis of month base //
 				{
-					
+
 					if ($adm_status == 1 && $Admission_month == ($month + 3)) {
 						$temp = 1;
 					}
-					
+
 					$mnth_val = $this->farheen->feehead_mnth($temp, $i);
 					$fhead_mnth =  $mnth_val[0]->mnth;
 					if ($fhead_mnth == 1) {
@@ -437,11 +437,11 @@ class Monthly_calculation extends MY_Controller
 				} else {
 					if ($CL_BASED[$i] == 1) // calculation on the basis of class base //
 					{
-						
+
 						if ($adm_status == 1 && $Admission_month == ($month + 3)) {
-								$temp = 1;
-							}
-						
+							$temp = 1;
+						}
+
 						switch ($emp_ward) {
 							case 1:
 								$amt_fee = $feeclw_AMOUNT[$i];
@@ -797,13 +797,14 @@ class Monthly_calculation extends MY_Controller
 							} elseif ($HType[$i] == 'SCIENCE') {
 								$h_fee = $amt_fee * $science;
 							} elseif ($HType[$i] == 'LATEFINE') {
-
+								// echo 'sdfsd';die;
 								$late_fine = $this->farheen->selectSingleData('latefine_master', '*', "ID='1'");
 								$l_status = $late_fine->status;
 								$l_collection_mode = $late_fine->collection_mode;
 								$l_month_applied = $late_fine->month_applied;
 								$l_date_applied = $late_fine->date_applied;
 								$l_late_amount = $late_fine->late_amount;
+								// echo $l_late_amount;die;
 								$current_month = date('m');
 								$sys_date = date('d');
 								if ($month == 1) {
@@ -833,27 +834,24 @@ class Monthly_calculation extends MY_Controller
 								}
 
 								$diff = $current_month - $m;
-
 								if ($l_status == 1) {
-
-									if ($diff < 0) {
-
+									if ($diff > 0) {
 										$late_fee = $l_late_amount;
-									} elseif ($diff = 0) {
-
+										
+									} elseif ($diff == 0) {
 										if ($l_date_applied <= $sys_date) {
 											$late_fee = $l_late_amount;
 										} else {
 											$late_fee = 0;
+											
 										}
 									} else {
-
 										$late_fee = 0;
 									}
-
 									$h_fee = $late_fee;
+									
 								} else {
-									$h_fee = 0;
+									 $h_fee = 0;
 								}
 							} elseif ($HType[$i] == 'BOOK') {
 								$h_fee = 0;

@@ -53,7 +53,7 @@ class Student_details extends MY_Controller
 		$stopage = $this->dbcon->select('stoppage', '*');
 		$religion = $this->dbcon->select('religion', '*');
 		$subject = $this->dbcon->select('subjects', '*');
-		$adm_no = $this->dbcon->select('adm_no', '*'); //db changed
+		$adm_no = $this->dbcon->select('adm_no', '*'); 
 		$array = array(
 			'class' => $class,
 			'section' => $section,
@@ -346,7 +346,7 @@ class Student_details extends MY_Controller
 		// print_r($sibling_history);
 		// exit;
 
-		$new_id = $dft + 1;
+		$new_id = $adm_no + 1;
 
 		$new_adm = array('adm_no' => $new_id);
 		if ($this->dbcon->insert('student', $student_details) && $this->dbcon->insert('parents', $parent_father) && $this->dbcon->insert('parents', $parent_mother) && $this->dbcon->insert('childhist', $sibling_history) && $this->dbcon->update('adm_no', $new_adm, "ID='1'")) {

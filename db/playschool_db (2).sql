@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 30, 2024 at 05:57 AM
+-- Generation Time: Nov 01, 2024 at 11:07 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -269,7 +269,7 @@ CREATE TABLE `adm_no` (
 --
 
 INSERT INTO `adm_no` (`ID`, `adm_no`, `studentid`, `chartno`, `bonano`, `dobno`, `tcno`, `Current_Year`, `FeeType`, `MasterLedger`, `tchead`, `Tution_fee_Head`, `Caution_Money`, `EMP_ID`, `STD_ID`) VALUES
-('1', '2324001', 'A', '1', '5', '2', '9', '2024', 5, 6, 'BCH/24-25', 5, 9, '3', 'EMP/');
+('1', '2425005', 'A', '2', '5', '2', '10', '2024', 5, 6, 'BCH/24-25', 5, 9, '3', 'EMP/');
 
 -- --------------------------------------------------------
 
@@ -562,7 +562,8 @@ INSERT INTO `application` (`app_id`, `name`, `father_name`, `mother_name`, `clas
 (65, 'asdasd', 'asdasd', 'asdasda', 'Mother Toddler', 'r@gmail.com', '1231231231', 'dasdasd', 'asdasda', '2', '2024-10-29'),
 (66, 'casdasd', 'asda', 'sdasda', 'Mother Toddler', 'Ghgsa@gmail', '2131231231', 'asdasda', 'asdasd', '2', '2024-10-29'),
 (67, 'sfd', 'fsdfsd', 'fdsfs', 'Mother Toddler', 'Ghgsa@gmail', '2222222222', 'sdfsdf', 'asdfasdf', '1', '2024-10-29'),
-(68, 'ergd', 'ggsfsd', 'dfgsdfg', 'Prep/Sr.KG', 'Ghgsa@gmail', '1344232342', 'fgjhfgjhgh', 'gdjkfhj', '1', '2024-10-30');
+(68, 'ergd', 'ggsfsd', 'dfgsdfg', 'Prep/Sr.KG', 'Ghgsa@gmail', '1344232342', 'fgjhfgjhgh', 'gdjkfhj', '1', '2024-10-30'),
+(69, 'rowhit', 'rk', 'rk', 'Mother Toddler', 'Ghgsa@gmail', '1234567899', 'iutguigyuigy', 'ouhkjghkjg', '1', '2024-11-01');
 
 -- --------------------------------------------------------
 
@@ -989,6 +990,13 @@ CREATE TABLE `charcert` (
   `duplcate_Issue` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `charcert`
+--
+
+INSERT INTO `charcert` (`CERT_NO`, `ADM_NO`, `S_NAME`, `F_NAME`, `M_Name`, `Adm_Date`, `End_DATE`, `class_name`, `Issued_Date`, `duplcate_Issue`) VALUES
+('BCH/24-25/1', '', 'MEOWW', 'DASDASD', 'ASDASDA', '2022-02-01 00:00:00', '2024-11-01 00:00:00', 'Baby Pre-Nursery', '2024-11-01 00:00:00', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -1093,7 +1101,12 @@ INSERT INTO `childhist` (`StId`, `AdmNo`, `Name1`, `DOB1`, `Sex1`, `Adm1`, `Name
 ('A14303', '14303', '', '0000-00-00', '', '', '', '0000-00-00', '', '', '', '0000-00-00', '', '', '', '0000-00-00', '', ''),
 ('A14304', '14304', '', '0000-00-00', '', '', '', '0000-00-00', '', '', '', '0000-00-00', '', '', '', '0000-00-00', '', ''),
 ('A14308', '2425001', '', '0000-00-00', '', '', '', '0000-00-00', '', '', '', NULL, '', NULL, '', NULL, '', NULL),
-('A1', '2425002', '', '0000-00-00', '', '', '', '0000-00-00', '', '', '', NULL, '', NULL, '', NULL, '', NULL);
+('A1', '2425002', '', '0000-00-00', '', '', '', '0000-00-00', '', '', '', NULL, '', NULL, '', NULL, '', NULL),
+('A2324001', '2425003', '', '0000-00-00', '', '', '', '0000-00-00', '', '', '', '1970-01-01', '', '', '', '1970-01-01', '', ''),
+('A1', '2425004', '', '0000-00-00', '', '', '', '0000-00-00', '', '', '', NULL, '', NULL, '', NULL, '', NULL),
+('A2425005', '2425003', '', '0000-00-00', '', '', '', '0000-00-00', '', '', '', NULL, '', NULL, '', NULL, '', NULL),
+('A1', '2425003', '', '0000-00-00', '', '', '', '0000-00-00', '', '', '', NULL, '', NULL, '', NULL, '', NULL),
+('A1', '2425004', '', '0000-00-00', '', '', '', '0000-00-00', '', '', '', NULL, '', NULL, '', NULL, '', NULL);
 
 -- --------------------------------------------------------
 
@@ -1453,7 +1466,16 @@ INSERT INTO `daycoll` (`RECT_NO`, `RECT_DATE`, `STU_NAME`, `STUDENTID`, `ADM_NO`
 ('A000143', '2024-10-23', 'SHASHI PANDEY', 'A14254', '216738', 'Pre-Nursery', 'A', 0, 'NOV', 2000, 0, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'A000143', NULL, NULL, NULL, NULL, 'N/A', 'N/A', 0, 'N/A', 1, 'EMP0229', 'CASH', 'N/A', '2024-10-23', 2024, 'N/A', 0),
 ('A000144', '2024-10-23', 'SHASHI PANDEY', 'A14254', '216738', 'Pre-Nursery', 'A', 0, 'DEC', 5000, 0, 0, 0, 0, 3000, 0, 0, 0, 2000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'A000144', NULL, NULL, NULL, 'N/A', 'N/A', 0, 'N/A', 1, 'EMP0229', 'CASH', 'N/A', '2024-10-23', 2024, 'N/A', 0),
 ('A000145', '1970-01-01', 'HREYAANSH RAJYAVARDHAN', 'A14261', '216759', 'Pre-Nursery', 'A', 0, 'OCT-NOV', 44000, 0, 0, 0, 0, 0, 44000, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'A000145', 'A000145', NULL, NULL, NULL, NULL, 'N/A', 'N/A', 0, 'N/A', 1, 'EMP0229', 'CASH', 'N/A', '2024-10-29', 2024, 'N/A', 0),
-('A000146', '1970-01-01', 'REEVA VIJAY', 'A14288', '319012', 'Prep', 'A', 0, 'SEP', 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'A000146', NULL, NULL, NULL, NULL, NULL, NULL, 'N/A', 'N/A', 0, 'N/A', 1, 'EMP0229', 'CASH', 'N/A', '2024-10-29', 2024, 'N/A', 0);
+('A000146', '1970-01-01', 'REEVA VIJAY', 'A14288', '319012', 'Prep', 'A', 0, 'SEP', 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'A000146', NULL, NULL, NULL, NULL, NULL, NULL, 'N/A', 'N/A', 0, 'N/A', 1, 'EMP0229', 'CASH', 'N/A', '2024-10-29', 2024, 'N/A', 0),
+('A000147', '1970-01-01', NULL, NULL, '', NULL, NULL, NULL, 'AUG-SEP', 41240, 0, 0, 0, 0, 1000, 33000, 600, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'A000147', 'A000147', NULL, NULL, NULL, NULL, NULL, NULL, 'N/A', 'N/A', 0, 'N/A', 1, 'EMP0229', 'CASH', 'N/A', '2024-10-30', 2024, 'N/A', 0),
+('A000148', '1970-01-01', NULL, NULL, '', NULL, NULL, NULL, 'APR-MAY', 11840, 4000, 0, 0, 4000, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'A000148', 'A000148', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N/A', 'N/A', 0, 'N/A', 1, 'EMP0229', 'CASH', 'N/A', '2024-11-01', 2024, 'N/A', 0),
+('A000149', '1970-01-01', NULL, NULL, '', NULL, NULL, NULL, 'APR-MAY-JUN-JUL-AUG-SEP-OCT-NOV-DEC-JAN-FEB-MAR', 8700, 4000, 0, 0, 4000, 0, 0, 700, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'A000149', 'A000149', 'A000149', 'A000149', 'A000149', 'A000149', 'A000149', 'A000149', 'A000149', 'A000149', 'A000149', 'A000149', 'N/A', 'N/A', 0, 'N/A', 1, 'EMP0229', 'CASH', 'N/A', '2024-11-01', 2024, 'N/A', 0),
+('A000150', '1970-01-01', 'ROWHIT JACKER', 'A2324001', '2425003', 'Baby Pre-Nursery', 'Z', 0, 'APR', 8100, 4000, 0, 0, 4000, 0, 0, 100, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'A000150', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N/A', 'N/A', 0, 'N/A', 1, 'EMP0229', 'CASH', 'N/A', '2024-11-01', 2024, 'N/A', 0),
+('A000151', '1970-01-01', 'ROWHIT JACKER', 'A2324001', '2425003', 'Baby Pre-Nursery', 'Z', 0, 'APR-MAY', 100, 0, 0, 0, 0, 0, 0, 100, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'A000151', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N/A', 'N/A', 0, 'N/A', 1, 'EMP0229', 'CASH', 'N/A', '2024-11-01', 2024, 'N/A', 0),
+('A000152', '1970-01-01', 'ROSHAN JACKER', 'A1', '2425002', 'Pre-Nursery', 'A', 0, 'APR-MAY-JUN-JUL', 8400, 4000, 0, 0, 4000, 0, 0, 400, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'A000152', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N/A', 'N/A', 0, 'N/A', 1, 'EMP0229', 'CASH', 'N/A', '2024-11-01', 2024, 'N/A', 0),
+('A000153', '1970-01-01', 'ROWHIT', 'A1', '2425003', 'Baby Pre-Nursery', 'A', 0, 'APR-MAY-JUN-JUL', 27700, 0, 0, 5500, 0, 0, 22000, 200, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'A000153', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N/A', 'N/A', 0, 'N/A', 1, 'EMP0229', 'CASH', 'N/A', '2024-11-01', 2024, 'N/A', 0),
+('A000154', '1970-01-01', 'ROWHIT', 'A1', '2425003', 'Baby Pre-Nursery', 'A', 0, 'APR-MAY-JUN', 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'A000154', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N/A', 'N/A', 0, 'N/A', 1, 'EMP0229', 'CASH', 'N/A', '2024-11-01', 2024, 'N/A', 0),
+('A000155', '1970-01-01', 'ROWHIT', 'A1', '2425003', 'Baby Pre-Nursery', 'A', 0, 'APR-MAY-JUN-JUL-AUG', 5600, 0, 0, 0, 0, 0, 5500, 100, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'A000155', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N/A', 'N/A', 0, 'N/A', 1, 'EMP0229', 'CASH', 'N/A', '2024-11-01', 2024, 'N/A', 0);
 
 -- --------------------------------------------------------
 
@@ -2160,7 +2182,60 @@ INSERT INTO `feegeneration` (`Month_NM`, `STU_NAME`, `STUDENTID`, `ADM_NO`, `CLA
 ('SEP', 'FATIMA HUSSAIN', 'A14296', '14296', 'Baby Pre-Nursery', 'A', 0, 3500, 0, 0, 0, 0, 2000, 0, 0, 0, 1500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-09-30', 146),
 ('SEP', 'ABHIRUP KOLEY', 'A14298', '14298', 'Baby Pre-Nursery', 'A', 0, 2000, 0, 0, 0, 0, 2000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-09-30', 147),
 ('SEP', 'ZOBIA MUSARRAT', 'A14299', '14299', 'Nursery', 'A', 0, 3500, 0, 0, 0, 0, 2000, 0, 0, 0, 1500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-09-30', 148),
-('SEP', 'PURVI VISHNU ADPA ', 'A14297', '14297', 'Baby Pre-Nursery', 'A', 0, 2000, 0, 0, 0, 0, 2000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-09-30', 149);
+('SEP', 'PURVI VISHNU ADPA ', 'A14297', '14297', 'Baby Pre-Nursery', 'A', 0, 2000, 0, 0, 0, 0, 2000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-09-30', 149),
+('OCT', 'HREYAANSH RAJYAVARDHAN', 'A14261', NULL, 'Pre-Nursery', 'A', 0, 5500, 0, 0, 0, 0, 0, 5500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-10-30', 150),
+('OCT', 'RIYANSH RAJ', 'A14263', NULL, 'Pre-Nursery', 'A', 0, 7000, 0, 0, 0, 0, 1500, 5500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-10-30', 151),
+('OCT', 'AYAAN SHARMA', 'A14266', NULL, 'Pre-Nursery', 'A', 0, 5500, 0, 0, 0, 0, 0, 5500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-10-30', 152),
+('OCT', 'AADITRI JHA', 'A14268', NULL, 'Nursery', 'A', 0, 7000, 0, 0, 0, 0, 1500, 5500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-10-30', 153),
+('OCT', 'GUNGUN KUMARI TURI', 'A14269', NULL, 'Nursery', 'A', 0, 5500, 0, 0, 0, 0, 0, 5500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-10-30', 154),
+('OCT', 'AAYUSHI JHA ', 'A14270', NULL, 'Nursery', 'A', 0, 5500, 0, 0, 0, 0, 0, 5500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-10-30', 155),
+('OCT', 'SHIVANSH RAJ', 'A14279', NULL, 'Prep', 'A', 0, 7000, 0, 0, 0, 0, 1500, 5500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-10-30', 156),
+('OCT', 'SHREYANSH RANJAN', 'A14285', NULL, 'Pre-Nursery', 'A', 0, 5500, 0, 0, 0, 0, 0, 5500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-10-30', 157),
+('OCT', 'REEVA VIJAY', 'A14288', NULL, 'Prep', 'A', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-10-30', 158),
+('OCT', 'AARUSH KUMAR', 'A14289', NULL, 'Pre-Nursery', 'A', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-10-30', 159),
+('OCT', 'RIYANSH BOSE', 'A14290', NULL, 'Baby Pre-Nursery', 'A', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-10-30', 160),
+('OCT', 'UTKARSH KUMAR', 'A14301', NULL, 'Baby Pre-Nursery', 'A', 0, 5500, 0, 0, 0, 0, 0, 5500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-10-30', 161),
+('OCT', 'ANSH RAJ', 'A14291', NULL, 'Pre-Nursery', 'A', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-10-30', 162),
+('OCT', 'KESHAV KUMAR', 'A14292', NULL, 'Prep', 'A', 0, 7000, 0, 0, 0, 0, 1500, 5500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-10-30', 163),
+('OCT', 'MUHAMMAD TALHA RAZA', 'A14293', NULL, 'Baby Pre-Nursery', 'A', 0, 1500, 0, 0, 0, 0, 1500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-10-30', 164),
+('OCT', 'KRITARTH JHA', 'A14304', NULL, 'Baby Pre-Nursery', 'A', 0, 7000, 0, 0, 0, 0, 1500, 5500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-10-30', 165),
+('OCT', 'EVANSHIKA', 'A14303', NULL, 'Baby Pre-Nursery', 'A', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-10-30', 166),
+('OCT', 'SYED MUHAMMAD HASSAAN ', 'A14294', NULL, 'Pre-Nursery', 'A', 0, 1500, 0, 0, 0, 0, 1500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-10-30', 167),
+('OCT', 'AYANSH MANAN LAKRA', 'A14295', NULL, 'Baby Pre-Nursery', 'A', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-10-30', 168),
+('OCT', 'FATIMA HUSSAIN', 'A14296', NULL, 'Baby Pre-Nursery', 'A', 0, 1500, 0, 0, 0, 0, 1500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-10-30', 169),
+('OCT', 'ABHIRUP KOLEY', 'A14298', NULL, 'Baby Pre-Nursery', 'A', 0, 5500, 0, 0, 0, 0, 0, 5500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-10-30', 170),
+('OCT', 'ZOBIA MUSARRAT', 'A14299', NULL, 'Nursery', 'A', 0, 7000, 0, 0, 0, 0, 1500, 5500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-10-30', 171),
+('OCT', 'PURVI VISHNU ADPA ', 'A14297', NULL, 'Baby Pre-Nursery', 'A', 0, 5500, 0, 0, 0, 0, 0, 5500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-10-30', 172),
+('OCT', 'RAHUL JACKER', 'A14308', NULL, 'Baby Pre-Nursery', 'Z', 0, 1500, 0, 0, 0, 0, 1500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-10-30', 173),
+('OCT', 'ROSHAN JACKER', 'A1', NULL, 'Pre-Nursery', 'A', 0, 1500, 0, 0, 0, 0, 1500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-10-30', 174),
+('OCT', 'ROWHIT JACKER', 'A2324001', NULL, 'Baby Pre-Nursery', 'Z', 0, 1500, 0, 0, 0, 0, 1500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-10-30', 175),
+('OCT', 'MEOW CAT', 'A1', NULL, 'Pre-Nursery', 'Z', 0, 1500, 0, 0, 0, 0, 1500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-10-30', 176),
+('DEC', 'HREYAANSH RAJYAVARDHAN', 'A14261', NULL, 'Pre-Nursery', 'A', 0, 5500, 0, 0, 0, 0, 0, 5500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-01', 177),
+('DEC', 'RIYANSH RAJ', 'A14263', NULL, 'Pre-Nursery', 'A', 0, 7000, 0, 0, 0, 0, 1500, 5500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-01', 178),
+('DEC', 'AYAAN SHARMA', 'A14266', NULL, 'Pre-Nursery', 'A', 0, 5500, 0, 0, 0, 0, 0, 5500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-01', 179),
+('DEC', 'AADITRI JHA', 'A14268', NULL, 'Nursery', 'A', 0, 7000, 0, 0, 0, 0, 1500, 5500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-01', 180),
+('DEC', 'GUNGUN KUMARI TURI', 'A14269', NULL, 'Nursery', 'A', 0, 5500, 0, 0, 0, 0, 0, 5500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-01', 181),
+('DEC', 'AAYUSHI JHA ', 'A14270', NULL, 'Nursery', 'A', 0, 5500, 0, 0, 0, 0, 0, 5500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-01', 182),
+('DEC', 'SHIVANSH RAJ', 'A14279', NULL, 'Prep', 'A', 0, 7000, 0, 0, 0, 0, 1500, 5500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-01', 183),
+('DEC', 'SHREYANSH RANJAN', 'A14285', NULL, 'Pre-Nursery', 'A', 0, 5500, 0, 0, 0, 0, 0, 5500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-01', 184),
+('DEC', 'REEVA VIJAY', 'A14288', NULL, 'Prep', 'A', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-01', 185),
+('DEC', 'AARUSH KUMAR', 'A14289', NULL, 'Pre-Nursery', 'A', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-01', 186),
+('DEC', 'RIYANSH BOSE', 'A14290', NULL, 'Baby Pre-Nursery', 'A', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-01', 187),
+('DEC', 'UTKARSH KUMAR', 'A14301', NULL, 'Baby Pre-Nursery', 'A', 0, 5500, 0, 0, 0, 0, 0, 5500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-01', 188),
+('DEC', 'ANSH RAJ', 'A14291', NULL, 'Pre-Nursery', 'A', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-01', 189),
+('DEC', 'KESHAV KUMAR', 'A14292', NULL, 'Prep', 'A', 0, 7000, 0, 0, 0, 0, 1500, 5500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-01', 190),
+('DEC', 'MUHAMMAD TALHA RAZA', 'A14293', NULL, 'Baby Pre-Nursery', 'A', 0, 1500, 0, 0, 0, 0, 1500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-01', 191),
+('DEC', 'KRITARTH JHA', 'A14304', NULL, 'Baby Pre-Nursery', 'A', 0, 7000, 0, 0, 0, 0, 1500, 5500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-01', 192),
+('DEC', 'EVANSHIKA', 'A14303', NULL, 'Baby Pre-Nursery', 'A', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-01', 193),
+('DEC', 'SYED MUHAMMAD HASSAAN ', 'A14294', NULL, 'Pre-Nursery', 'A', 0, 1500, 0, 0, 0, 0, 1500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-01', 194),
+('DEC', 'AYANSH MANAN LAKRA', 'A14295', NULL, 'Baby Pre-Nursery', 'A', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-01', 195),
+('DEC', 'FATIMA HUSSAIN', 'A14296', NULL, 'Baby Pre-Nursery', 'A', 0, 1500, 0, 0, 0, 0, 1500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-01', 196),
+('DEC', 'ABHIRUP KOLEY', 'A14298', NULL, 'Baby Pre-Nursery', 'A', 0, 5500, 0, 0, 0, 0, 0, 5500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-01', 197),
+('DEC', 'ZOBIA MUSARRAT', 'A14299', NULL, 'Nursery', 'A', 0, 7000, 0, 0, 0, 0, 1500, 5500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-01', 198),
+('DEC', 'PURVI VISHNU ADPA ', 'A14297', NULL, 'Baby Pre-Nursery', 'A', 0, 5500, 0, 0, 0, 0, 0, 5500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-01', 199),
+('DEC', 'RAHUL JACKER', 'A14308', NULL, 'Baby Pre-Nursery', 'Z', 0, 1500, 0, 0, 0, 0, 1500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-01', 200),
+('DEC', 'ROSHAN JACKER', 'A1', NULL, 'Pre-Nursery', 'A', 0, 1500, 0, 0, 0, 0, 1500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-01', 201),
+('DEC', 'ROWHIT', 'A1', NULL, 'Baby Pre-Nursery', 'A', 0, 7000, 0, 0, 0, 0, 1500, 5500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-01', 202);
 
 -- --------------------------------------------------------
 
@@ -3323,25 +3398,25 @@ INSERT INTO `feehead` (`ACT_CODE`, `FEE_HEAD`, `MONTHLY`, `CL_BASED`, `AMOUNT`, 
 (4, 'KIT', 0, 0, 10000, 'KIT', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L4'),
 (5, 'VAN FEES', 1, 0, 0, 'VAN FEES', 0, 0, 0, 0, 0, 1, 'BUS', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 'L5'),
 (6, 'MONTHLY FEES', 1, 1, 0, 'MNTH FEES', 0, 0, 0, 0, 0, 1, 'No', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 'L6'),
-(7, '-', 0, 0, 0, '-', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L7'),
-(8, '-', 0, 0, 0, '-', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 'L8'),
-(9, '-', 0, 0, 0, '-', 0, 0, 0, 0, 0, 1, 'No', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 'L9'),
-(10, '-', 0, 0, 0, '-', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L10'),
-(11, '-', 0, 0, 0, '-', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L11'),
-(12, '-', 0, 0, 0, '-', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L12'),
-(13, '-', 0, 0, 0, '-', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L13'),
-(14, '-', 0, 0, 0, '-', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L14'),
-(15, '-', 0, 0, 0, '-', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L15'),
-(16, '-', 0, 0, 0, '-', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L16'),
-(17, '-', 0, 0, 0, '-', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L17'),
-(18, '-', 0, 0, 0, '-', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L18'),
-(19, '-', 0, 0, 0, '-', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L19'),
-(20, '-', 0, 0, 0, '-', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L20'),
-(21, '-', 0, 0, 0, '-', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L21'),
-(22, '-', 0, 0, 0, '-', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L22'),
-(23, '-', 0, 0, 0, '-', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L23'),
-(24, '-', 0, 0, 0, '-', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L24'),
-(25, '-', 0, 0, 0, '-', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L25');
+(7, 'LATEFINE', 0, 0, 0, 'LATEFINE', 0, 0, 0, 0, 0, 1, 'LATEFINE', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L7'),
+(8, '', 0, 0, 0, '', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 'L8'),
+(9, '', 0, 0, 0, '', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L9'),
+(10, '', 0, 0, 0, '', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L10'),
+(11, '', 0, 0, 0, '', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L11'),
+(12, '', 0, 0, 0, '', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L12'),
+(13, '', 0, 0, 0, '', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L13'),
+(14, '', 0, 0, 0, '', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L14'),
+(15, '', 0, 0, 0, '', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L15'),
+(16, '', 0, 0, 0, '', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L16'),
+(17, '', 0, 0, 0, '', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L17'),
+(18, '', 0, 0, 0, '', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L18'),
+(19, '', 0, 0, 0, '', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L19'),
+(20, '', 0, 0, 0, '', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L20'),
+(21, '', 0, 0, 0, '', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L21'),
+(22, '', 0, 0, 0, '', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L22'),
+(23, '', 0, 0, 0, '', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L23'),
+(24, '', 0, 0, 0, '', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L24'),
+(25, '', 0, 0, 0, '', 0, 0, 0, 0, 0, 1, 'No', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'L25');
 
 -- --------------------------------------------------------
 
@@ -3675,7 +3750,7 @@ CREATE TABLE `latefine_master` (
 --
 
 INSERT INTO `latefine_master` (`ID`, `month_applied`, `date_applied`, `late_amount`, `collection_mode`, `status`) VALUES
-(1, 4, 5, 100, 1, 0);
+(1, 4, 5, 100, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -4495,6 +4570,16 @@ INSERT INTO `parents` (`STDID`, `ED_QUA`, `OCCUPATION`, `DESIG`, `MTH_INCOME`, `
 ('A14307', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'M'),
 ('A14308', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'F'),
 ('A14308', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'M'),
+('A1', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'F'),
+('A1', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'M'),
+('A2324001', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'F'),
+('A2324001', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'M'),
+('A1', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'F'),
+('A1', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'M'),
+('A2425005', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'F'),
+('A2425005', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'M'),
+('A1', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'F'),
+('A1', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'M'),
 ('A1', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'F'),
 ('A1', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'M');
 
@@ -6049,7 +6134,7 @@ INSERT INTO `student` (`STUDENTID`, `ADM_DATE`, `adm_no`, `BIRTH_DT`, `TITLE_NM`
 ('A14266', '2022-07-06', '206279', '2020-10-26', NULL, 'AYAAN SHARMA', NULL, 'NONE', 3, 1, 'INDIA', '1', NULL, 'ARVIND KUMAR', 'SWATI KUMARI', 'N/A', 'N/A', 1, 1, NULL, 'RAM NAGAR COLONY CHUTIA POWER HOUSE RANCHI', 'RANCHI', 'Jharkhand', 'India', '', '', '', '', '9835685082', '', 'RAM NAGAR COLONY CHUTIA POWER HOUSE RANCHI', 'RANCHI', 'Jharkhand', 'India', '', '', '', '', '7979767607', '', 1, 2, 'Pre-Nursery', 1, 'A', 0, '0', 1, 0, NULL, 'N/A', NULL, NULL, NULL, 0, 0, NULL, NULL, '2023', 'A000019', 'A000019', 'A000019', 'A000019', 'A000019', 'A000019', 'A000127', 'A000127', 'A000127', 'A000128', 'A000128', 'A000128', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N/A', 1, 0, NULL, NULL, NULL, NULL, NULL, 0, '000000000000', 'ACTIVE', 0, 'N/A', 'N/A', 'N/A', 0, 0, 'bachpan@2019', '', '206279', 0, 0, 0, '7', 'N/A', 0, 'N/A'),
 ('A14267', '2023-02-22', '216755', '2020-12-03', NULL, 'IRA BHARDWAJ', NULL, 'B+', 4, 2, 'INDIA', '1', NULL, 'SONU KUMAR PRASAD ', 'KHUSHBU', 'N/A', 'N/A', 1, 1, NULL, 'KRISHNAPURI ROAD NO. 4 NEAR POST OFFICE CHUTIA, RANCHI', 'RANCHI', 'Jharkhand', 'India', '', '', '', '', '6203554583', '', 'KRISHNAPURI ROAD NO. 4 NEAR POST OFFICE CHUTIA, RANCHI', 'RANCHI', 'Jharkhand', 'India', '', '', '', '', '7979017634', '', 1, 2, 'Pre-Nursery', 1, 'A', 0, '0', 1, 0, NULL, 'N/A', NULL, NULL, NULL, 0, 0, NULL, NULL, '2023', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N/A', 1, 0, NULL, NULL, NULL, NULL, NULL, 0, '000000000000', 'UNACTIVE', 0, 'N/A', 'N/A', 'N/A', 0, 0, 'bachpan@2019', '', '216755', 0, 0, 0, '7', 'N/A', 0, 'N/A'),
 ('A14268', '2023-03-10', '121676010', '2023-03-06', NULL, 'AADITRI JHA', NULL, 'NONE', 1, 1, 'INDIA', '1', NULL, 'ROSHAN KUMAR ', 'SHWETA KUMARI ', 'N/A', 'N/A', 1, 1, NULL, 'ROAD NO - 3 KRISHNAPURI , CHUTIA RANCHI', 'RANCHI', 'JHARKHAND', 'INDIA', '', '', '', '', '7295962198', '', 'ROAD NO - 3 KRISHNAPURI , CHUTIA RANCHI', 'RANCHI', 'JHARKHAND', 'INDIA', '', '', '', '', '8521412442', '', 1, 3, 'Nursery', 1, 'A', 0, '0', 8, 0, NULL, 'N/A', NULL, NULL, NULL, 0, 0, NULL, NULL, '2023', 'A000004,A000013', 'A000028', 'A000044', 'A000068', 'A000088', 'A000112', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', '', '', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N/A', 1, 0, NULL, NULL, NULL, NULL, NULL, 0, '000000000000', 'ACTIVE', 0, 'N/A', 'N/A', 'N/A', 0, 0, 'bachpan@2019', '', '121676010', 0, 0, 0, '3', 'N/A', 0, 'N/A'),
-('A14269', '2023-01-16', '216751', '2019-10-09', NULL, 'GUNGUN KUMARI TURI', NULL, 'NONE', 2, 1, 'INDIA', '1', NULL, 'BABLOO TURI', 'KHUSHBU KUMARI', 'N/A', 'N/A', 1, 1, NULL, 'AT - HARIJAN DADA , GAUSHALA ROAD DUDHANI , NAG MANDIR PO- DUMKA ', 'RANCHI', 'JHARKHAND', 'INDIA', '', '', '', '', '9798816485', '', 'AT - HARIJAN DADA , GAUSHALA ROAD DUDHANI , NAG MANDIR PO- DUMKA ', 'RANCHI', 'JHARKHAND', 'INDIA', '', '', '', '', '8757748264', '', 1, 3, 'Nursery', 1, 'A', 0, '0', 1, 0, NULL, 'N/A', NULL, NULL, NULL, 0, 0, NULL, NULL, '2023', 'A000018,A000055', 'A000055', 'A000055', 'A000055', 'A000099', 'A000117', 'A000129', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', '', '', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N/A', 1, 0, NULL, NULL, NULL, NULL, NULL, 0, '000000000000', 'ACTIVE', 0, 'N/A', 'N/A', 'N/A', 0, 0, 'bachpan@2019', '', '216751', 0, 0, 0, '1', 'N/A', 0, 'N/A'),
+('A14269', '2023-01-16', '216751', '2019-10-09', NULL, 'GUNGUN KUMARI TURI', NULL, 'NONE', 2, 1, 'INDIA', '1', NULL, 'BABLOO TURI', 'KHUSHBU KUMARI', 'N/A', 'N/A', 1, 1, NULL, 'AT - HARIJAN DADA , GAUSHALA ROAD DUDHANI , NAG MANDIR PO- DUMKA ', 'RANCHI', 'JHARKHAND', 'INDIA', '', '', '', '', '9798816485', '', 'AT - HARIJAN DADA , GAUSHALA ROAD DUDHANI , NAG MANDIR PO- DUMKA ', 'RANCHI', 'JHARKHAND', 'INDIA', '', '', '', '', '8757748264', '', 1, 3, 'Nursery', 1, 'A', 0, '0', 1, 0, NULL, 'N/A', NULL, NULL, NULL, 0, 0, NULL, NULL, '2023', 'A000018,A000055', 'A000055', 'A000055', 'A000055', 'A000099', 'A000117', 'A000129,A000147', 'A000148', 'A000149', 'N/A', 'N/A', 'N/A', '', '', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N/A', 1, 0, NULL, NULL, NULL, NULL, NULL, 0, '000000000000', 'ACTIVE', 0, 'N/A', 'N/A', 'N/A', 0, 0, 'bachpan@2019', '', '216751', 0, 0, 0, '1', 'N/A', 0, 'N/A'),
 ('A14270', '2023-02-03', '216754', '2019-10-15', NULL, 'AAYUSHI JHA ', NULL, 'NONE', 4, 1, 'INDIA', '1', NULL, 'ASHISH KUMAR ', 'RAKHI ', 'N/A', 'N/A', 1, 1, NULL, 'KRISHNAPURI , CHUTIA ROAD NO- 1 ,RANCHI', 'RANCHI', 'JHARKHAND', 'INDIA', '', '', '', '', '6299965295', '', 'KRISHNAPURI , CHUTIA ROAD NO- 1 ,RANCHI', 'RANCHI', 'JHARKHAND', 'INDIA', '', '', '', '', '9386624585', '', 1, 3, 'Nursery', 1, 'A', 0, '0', 1, 0, NULL, 'N/A', NULL, NULL, NULL, 0, 0, NULL, NULL, '2023', 'A000059', 'A000059', 'A000084', 'A000084', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', '', '', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N/A', 1, 0, NULL, NULL, NULL, NULL, NULL, 0, '000000000000', 'ACTIVE', 0, 'N/A', 'N/A', 'N/A', 0, 0, 'bachpan@2019', '', '216754', 0, 0, 0, '2', 'N/A', 0, 'N/A'),
 ('A14271', '2022-07-05', '183890', '2019-03-03', NULL, 'ARHAM SIDDIQUE', NULL, 'NONE', 4, 1, 'INDIA', '1', NULL, 'MOHAMMAD ZAUQUE SIDDIQUE ', 'AMRIN KHANAM', 'N/A', 'N/A', 1, 1, NULL, 'CENTRAL STREET SAMRAT COMPLEX MAIN ROAD', 'RANCHI', 'Jharkhand', 'India', '', '', '', '', '9570208238', '', 'CENTRAL STREET SAMRAT COMPLEX MAIN ROAD', 'RANCHI', 'Jharkhand', 'India', '', '', '', '', '7631794370', '', 1, 3, 'Nursery', 1, 'A', 0, '0', 1, 0, NULL, 'N/A', NULL, NULL, NULL, 0, 0, NULL, NULL, '2023', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N/A', 2, 0, NULL, NULL, NULL, NULL, NULL, 0, '000000000000', 'UNACTIVE', 0, 'N/A', 'N/A', 'N/A', 0, 0, 'bachpan@2019', '', '183890', 0, 0, 0, '7', 'N/A', 0, 'N/A'),
 ('A14272', '2022-08-11', '216731', '2019-12-10', NULL, 'AAVYA MAHESWARI', NULL, 'NONE', 4, 1, 'INDIA', '1', NULL, 'SURESH SABOO', 'NAJUK SABOO', 'N/A', 'N/A', 1, 1, NULL, 'C/O SHYAM LAL SABOO NEAR RAM MANDIR UPPER CHUTIA , RANCHI', 'RANCHI', 'JHARKHAND', 'INDIA', '', '', '', '', '7903634316', '', 'C/O SHYAM LAL SABOO NEAR RAM MANDIR UPPER CHUTIA , RANCHI', 'RANCHI', 'JHARKHAND', 'INDIA', '', '', '', '', '9334424621', '', 1, 3, 'Nursery', 1, 'A', 0, '0', 1, 0, NULL, 'N/A', NULL, NULL, 1, 0, 0, NULL, NULL, '2023', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', '', '', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N/A', 1, 0, NULL, NULL, NULL, NULL, NULL, 0, '000000000000', 'UNACTIVE', 0, 'N/A', 'N/A', 'N/A', 0, 0, 'bachpan@2019', '', '216731', 0, 0, 0, '7', 'N/A', 0, 'N/A'),
@@ -6079,13 +6164,16 @@ INSERT INTO `student` (`STUDENTID`, `ADM_DATE`, `adm_no`, `BIRTH_DT`, `TITLE_NM`
 ('A14303', '2024-06-18', '14303', '2021-04-09', NULL, 'EVANSHIKA', NULL, 'NONE', 4, 1, 'INDIA', '3', NULL, 'SANJEEV', 'PUJA', 'N/A', 'N/A', 1, 1, NULL, 'AMRAWATI COLONY', 'RANCHI', 'JHARKHAND', 'INDIA', '834002', '000', '', '', '9625161460', 'puja84946@gmail.com', 'AMRAWATI COLONY', 'RANCHI', 'JHARKHAND', 'INDIA', '834002', '000', '', '', '9310131705', 'SKsanjeevkumar09@gmail.com', 1, 1, 'Baby Pre-Nursery', 1, 'A', 0, '0', 1, 0, NULL, 'N/A', NULL, NULL, NULL, 0, 0, NULL, NULL, '2024', 'NOT ADMITTED', 'NOT ADMITTED', 'A000077', 'A000078', 'A000100', 'A000122', 'A000125', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', '', '', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N/A', 1, 0, NULL, NULL, NULL, NULL, NULL, 1, '000000000000', 'ACTIVE', 0, 'N/A', 'N/A', 'N/A', 0, 0, 'bachpan@2019', '', '14303', 0, 0, 1, '6', 'N/A', 0, 'N/A'),
 ('A14294', '2023-11-22', '319017', '2018-10-27', NULL, 'SYED MUHAMMAD HASSAAN ', NULL, 'NONE', 4, 1, 'INDIA', '3', NULL, 'SYED MOHAMMED SAJID ', 'NISHATH FATIMA', 'N/A', 'N/A', 2, 1, NULL, 'RAHMAT COLONY , NEAR SANSKRITI APARTMENT ,DORANDA RANCHI -2', 'RANCHI', 'JHARKHAND', 'INDIA', '', '', '', '', '7294823367', '', 'RAHMAT COLONY , NEAR SANSKRITI APARTMENT ,DORANDA RANCHI -2', 'RANCHI', 'JHARKHAND', 'INDIA', '', '', '', '', '8873575625', '', 1, 2, 'Pre-Nursery', 1, 'A', 0, '0', 13, 0, NULL, 'N/A', NULL, NULL, NULL, 0, 0, NULL, NULL, '2023', 'A000017,A000034', 'A000034', 'A000049', 'A000050', 'A000094', 'A000114', 'A000138', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', '', '', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N/A', 2, 0, NULL, NULL, NULL, NULL, NULL, 1, '954249211445', 'ACTIVE', 0, 'N/A', 'N/A', 'N/A', 0, 0, 'bachpan@2019', '', '319017', 0, 0, 0, '12', 'N/A', 0, 'N/A'),
 ('A14295', '2023-11-30', '319016', '2020-08-13', NULL, 'AYANSH MANAN LAKRA', NULL, 'NONE', 1, 1, 'INDIA', '3', NULL, 'AMAN SAMIR LAKRA ', 'PREMIKA XALXO', 'N/A', 'N/A', 2, 1, NULL, 'GOSSNER COMPOUND , PRINCIPAL LANE RANCHI ', 'RANCHI', 'JHARKHAND', 'INDIA', '', '', '', '', '6202804194', '', 'GOSSNER COMPOUND , PRINCIPAL LANE RANCHI ', 'RANCHI', 'JHARKHAND', 'INDIA', '', '', '', '', '7250918550', '', 1, 1, 'Baby Pre-Nursery', 1, 'A', 0, '0', 1, 0, NULL, 'N/A', NULL, NULL, NULL, 0, 0, NULL, NULL, '2023', 'A000011,A000032', 'A000032', 'A000052', 'A000073', 'A000092', 'A000107', 'A000133', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', '', '', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N/A', 3, 0, NULL, NULL, NULL, NULL, NULL, 1, '000000000000', 'ACTIVE', 0, 'N/A', 'N/A', 'N/A', 0, 0, 'bachpan@2019', '', '319016', 0, 0, 0, '12', 'N/A', 0, 'N/A'),
-('A14296', '2024-02-15', '14296', '2022-03-16', NULL, 'FATIMA HUSSAIN', NULL, 'NONE', 3, 1, 'INDIA', '3', NULL, 'SADDAM HUSSAIN ', 'SUMAIYA KHANAM', 'N/A', 'N/A', 1, 1, NULL, 'E-203 , PATEL CHOWK, BANSAL PLAZA ', 'RANCHI', 'JHARKHAND', 'INDIA', '834002', '', '', '', '9119347360', '', 'E-203 , PATEL CHOWK, BANSAL PLAZA ', 'RANCHI', 'JHARKHAND', 'INDIA', '834002', '', '', '', '9992486887', '', 1, 1, 'Baby Pre-Nursery', 1, 'A', 0, '0', 12, 0, NULL, 'N/A', NULL, NULL, NULL, 0, 0, NULL, NULL, '2023', 'A000008,A000061', 'A000061', 'A000061', 'A000061', 'A000102', 'A000120', 'A000137', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', '', '', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N/A', 2, 0, NULL, NULL, NULL, NULL, NULL, 1, '000000000000', 'ACTIVE', 0, 'N/A', 'N/A', 'N/A', 0, 0, 'bachpan@2019', '', '14296', 0, 0, 0, '1', 'N/A', 0, 'N/A'),
+('A14296', '2024-02-15', '14296', '2022-03-16', NULL, 'FATIMA HUSSAIN', NULL, 'NONE', 3, 1, 'INDIA', '3', NULL, 'SADDAM HUSSAIN ', 'SUMAIYA KHANAM', 'N/A', 'N/A', 1, 1, NULL, 'E-203 , PATEL CHOWK, BANSAL PLAZA ', 'RANCHI', 'JHARKHAND', 'INDIA', '834002', '', '', '', '9119347360', '', 'E-203 , PATEL CHOWK, BANSAL PLAZA ', 'RANCHI', 'JHARKHAND', 'INDIA', '834002', '', '', '', '9992486887', '', 1, 1, 'Baby Pre-Nursery', 1, 'A', 0, '0', 12, 0, NULL, 'N/A', NULL, NULL, NULL, 0, 0, NULL, NULL, '2023', 'A000008,A000061', 'A000061', 'A000061', 'A000061', 'A000102', 'A000120', 'A000137', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', '', '', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N/A', 2, 0, NULL, NULL, NULL, NULL, NULL, 1, '000000000000', 'ACTIVE', 0, 'N/A', 'N/A', 'N/A', 0, 0, 'bachpan@2019', 'assets/student_photo/A14296.jpg', '14296', 0, 0, 0, '1', 'N/A', 0, 'N/A'),
 ('A14298', '2024-03-30', '14298', '2021-04-02', NULL, 'ABHIRUP KOLEY', NULL, 'NONE', 4, 1, 'INDIA', '1', NULL, 'SUBHADIP KOLEY', 'MOUMITA KOLEY', 'N/A', 'N/A', 1, 1, NULL, 'NEW ANANTPUR , NEW OVER BRIDGE ,RANCHI ,834002', 'RANCHI', 'Jharkhand', 'India', '834002', '', '', '', '7478739073', '', 'NEW ANANTPUR , NEW OVER BRIDGE ,RANCHI ,834002', 'RANCHI', 'Jharkhand', 'India', '834002', '', '', '', '7366921413', '', 1, 1, 'Baby Pre-Nursery', 1, 'A', 0, '0', 1, 0, NULL, 'N/A', NULL, NULL, NULL, 0, 0, NULL, NULL, '2023', 'A000002,A000029', 'A000029', 'A000046', 'A000060', 'A000086', 'A000106', 'A000124', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N/A', 1, 0, NULL, NULL, NULL, NULL, NULL, 1, '000000000000', 'ACTIVE', 0, 'N/A', 'N/A', 'N/A', 0, 0, 'bachpan@2019', '', '14298', 0, 0, 0, '0', 'N/A', 0, 'N/A'),
 ('A14299', '2024-04-29', '14299', '2021-01-12', NULL, 'ZOBIA MUSARRAT', NULL, 'NONE', 3, 2, 'INDIA', '1', NULL, 'MOHAMMAD ASGHAR', 'MUSARRAT BANO', 'N/A', 'N/A', 3, 1, NULL, 'FLAT NO - E/2 , ATIULLAH ENCLAVE , RANCHI COLONY DORANDA', 'RANCHI', 'Jharkhand', 'India', '834001', '', '', '', '6203257752', '', 'FLAT NO - E/2 , ATIULLAH ENCLAVE , RANCHI COLONY DORANDA', 'RANCHI', 'Jharkhand', 'India', '834001', '', '', '', '9835577848', '', 1, 3, 'Nursery', 1, 'A', 0, '0', 13, 0, NULL, 'N/A', NULL, NULL, NULL, 0, 0, NULL, NULL, '2024', 'NOT ADMITTED', 'A000027', 'A000053', 'A000080', 'A000093', 'A000108', 'A000131', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N/A', 2, 0, NULL, NULL, NULL, NULL, NULL, 1, '000000000000', 'ACTIVE', 0, 'N/A', 'N/A', 'N/A', 0, 0, 'bachpan@2019', '', '14299', 0, 0, 1, '5', 'N/A', 0, 'N/A'),
 ('A14297', '2024-02-15', '14297', '2021-06-19', NULL, 'PURVI VISHNU ADPA ', NULL, 'NONE', 4, 2, 'INDIA', '1', NULL, 'A.PAWAN.KUMAR', 'PERABATHULA SRAWANI ', 'N/A', 'N/A', 1, 1, NULL, '', '', '', '', '', '', '', '', '', '', 'Q. NO. - D S/17B, NEAR KALI MANDIR, SOUTH RAILWAY COLONY ', 'RANCHI', 'Jharkhand', 'India', '', '', '', '', '9153644678', '', 1, 1, 'Baby Pre-Nursery', 1, 'A', 0, '0', 1, 0, NULL, 'N/A', NULL, NULL, NULL, 0, 0, NULL, NULL, '2023', 'A000021,A000035', 'A000035', 'A000048', 'A000070', 'A000087', 'A000119', 'A000139', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N/A', 1, 0, NULL, NULL, NULL, NULL, NULL, 1, '000000000000', 'ACTIVE', 0, 'N/A', 'N/A', 'N/A', 0, 0, 'bachpan@2019', '', '14297', 0, 0, 0, '1', 'N/A', 0, 'N/A'),
 ('A14305', '2024-10-15', '14305', '2000-03-30', NULL, 'RISHABH JAIN', NULL, 'O+', 4, 1, 'INDIA', '1', NULL, 'SKJ', 'MJ', 'N/A', 'N/A', 1, 1, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, 1, 'Baby Pre-Nursery', 1, 'A', 0, '0', 1, 0, NULL, 'N/A', NULL, NULL, 1, 0, 0, NULL, NULL, '2024', 'A000140', 'TC_ISSUE', 'TC_ISSUE', 'TC_ISSUE', 'TC_ISSUE', 'TC_ISSUE', 'TC_ISSUE', 'TC_ISSUE', 'TC_ISSUE', 'TC_ISSUE', 'TC_ISSUE', 'TC_ISSUE', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N/A', 1, 0, NULL, NULL, NULL, NULL, NULL, 1, '000000000000', 'UNACTIVE', 0, 'N/A', 'N/A', 'N/A', 0, 0, 'bachpan@2019', '', '14305', 0, 0, 0, '1', 'N/A', 0, 'N/A'),
 ('A14308', '2024-10-10', '2425001', '2024-10-11', NULL, 'RAHUL JACKER', NULL, 'B+', 1, 1, 'INDIA', '2', NULL, 'ADSD', 'ASDAS', 'N/A', 'N/A', 1, 1, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, 1, 'Baby Pre-Nursery', 17, 'Z', 0, '0', 8, 0, NULL, 'N/A', NULL, NULL, NULL, 0, 0, NULL, NULL, '2024', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N/A', 1, 0, NULL, NULL, NULL, NULL, NULL, 1, '000000000000', 'ACTIVE', 0, 'N/A', 'N/A', 'N/A', 0, 0, 'bachpan@2019', '', '2425001', 0, 0, 0, '1', 'N/A', 0, 'N/A'),
-('A1', '2024-10-25', '2425002', '2024-10-18', NULL, 'ROSHAN JACKER', NULL, 'O-', 2, 1, 'INDIA', '2', NULL, 'SDFGSAFD', 'FDASDFSD', 'N/A', 'N/A', 2, 1, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, 2, 'Pre-Nursery', 1, 'A', 0, '0', 2, 0, NULL, 'N/A', NULL, NULL, NULL, 0, 0, NULL, NULL, '2024', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N/A', 5, 0, NULL, NULL, NULL, NULL, NULL, 1, '000000000000', 'ACTIVE', 0, 'N/A', 'N/A', 'N/A', 0, 0, 'bachpan@2019', '', '2425002', 0, 0, 0, '1', 'N/A', 0, 'N/A');
+('A1', '2024-10-25', '2425002', '2024-10-18', NULL, 'ROSHAN JACKER', NULL, 'O-', 2, 1, 'INDIA', '2', NULL, 'SDFGSAFD', 'FDASDFSD', 'N/A', 'N/A', 2, 1, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, 2, 'Pre-Nursery', 1, 'A', 0, '0', 2, 0, NULL, 'N/A', NULL, NULL, NULL, 0, 0, NULL, NULL, '2024', 'A000152', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N/A', 5, 0, NULL, NULL, NULL, NULL, NULL, 1, '000000000000', 'ACTIVE', 0, 'N/A', 'N/A', 'N/A', 0, 0, 'bachpan@2019', '', '2425002', 0, 0, 0, '1', 'N/A', 0, 'N/A'),
+('A1', '2024-11-13', '2425003', '2024-08-08', NULL, 'ROWHIT', NULL, 'NONE', 4, 1, 'INDIA', '1', NULL, 'HIKGU', 'GJIVH', 'N/A', 'N/A', 1, 1, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, 1, 'Baby Pre-Nursery', 1, 'A', 0, '0', 8, 0, NULL, 'N/A', NULL, NULL, NULL, 0, 0, NULL, NULL, '2024', 'A000153,A000154,A000155', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N/A', 5, 0, NULL, NULL, NULL, NULL, NULL, 1, '000000000000', 'ACTIVE', 0, 'N/A', 'N/A', 'N/A', 0, 0, 'bachpan@2019', 'assets/student_photo/A1.jpg', '2425003', 0, 0, 0, '1', 'N/A', 0, 'N/A');
+INSERT INTO `student` (`STUDENTID`, `ADM_DATE`, `adm_no`, `BIRTH_DT`, `TITLE_NM`, `FIRST_NM`, `MIDDLE_NM`, `BLOOD_GRP`, `CATEGORY`, `SEX`, `NATION`, `EMP_WARD`, `EMPID`, `FATHER_NM`, `MOTHER_NM`, `LAST_SCH`, `LSCH_ADD`, `ADM_CLASS`, `ADM_SEC`, `SIB_NO`, `PERM_ADD`, `P_CITY`, `P_STATE`, `P_NATION`, `P_PIN`, `P_PHONE1`, `P_PHONE2`, `P_FAXNO`, `P_MOBILE`, `P_EMAIL`, `CORR_ADD`, `C_CITY`, `C_STATE`, `C_NATION`, `C_PIN`, `C_PHONE1`, `C_PHONE2`, `C_FAXNO`, `C_MOBILE`, `C_EMAIL`, `HOUSE_CODE`, `CLASS`, `DISP_CLASS`, `SEC`, `DISP_SEC`, `ROLL_NO`, `BUS_NO`, `STOPNO`, `FREESHIP`, `SCHOLAR`, `LETTERNO`, `LIB_FLAG`, `ACT_FLAG`, `TC_ISSUED`, `COMPUTER`, `HOSTEL`, `TC_NUMBER`, `PAID_UPTO`, `SESSIONID`, `APR_FEE`, `MAY_FEE`, `JUNE_FEE`, `JULY_FEE`, `AUG_FEE`, `SEP_FEE`, `OCT_FEE`, `NOV_FEE`, `DEC_FEE`, `JAN_FEE`, `FEB_FEE`, `MAR_FEE`, `CBSE_REG`, `CBSE_ROLL`, `SUBJECT1`, `SUBJECT2`, `SUBJECT3`, `SUBJECT4`, `SUBJECT5`, `SUBJECT6`, `WORK_DAYS`, `APR_ATT`, `MAY_ATT`, `JUNE_ATT`, `JULY_ATT`, `AUG_ATT`, `SEP_ATT`, `OCT_ATT`, `NOV_ATT`, `DEC_ATT`, `JAN_ATT`, `FEB_ATT`, `MAR_ATT`, `UPD_DATE`, `oldadmno`, `religion`, `math_lab`, `busno1`, `BFEE`, `BFEEType`, `HFEE`, `Mag`, `Fee_Book_No`, `Bus_Book_No`, `Student_Status`, `RemID`, `VL`, `VR`, `DEN`, `Height`, `Weight`, `Password`, `student_image`, `Parent_password`, `route_id`, `student_transport_facility_id`, `mid_session_admisson_status`, `Admission_month`, `mid_session_payment_status`, `Counter_payment_status`, `Login_Id`) VALUES
+('A1', '2022-02-01', '2425004', '2024-11-21', NULL, 'MEOWW', NULL, 'A-', 4, 1, 'INDIA', '2', NULL, 'DASDASD', 'ASDASDA', 'N/A', 'N/A', 1, 1, NULL, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 1, 1, 'Baby Pre-Nursery', 1, 'A', 0, '0', 10, 0, NULL, 'N/A', NULL, NULL, 1, 0, 0, NULL, NULL, '2024', 'TC_ISSUE', 'TC_ISSUE', 'TC_ISSUE', 'TC_ISSUE', 'TC_ISSUE', 'TC_ISSUE', 'TC_ISSUE', 'TC_ISSUE', 'TC_ISSUE', 'TC_ISSUE', 'TC_ISSUE', 'TC_ISSUE', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', 'N/A', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N/A', 2, 0, NULL, NULL, NULL, NULL, NULL, 1, '000000000000', 'UNACTIVE', 0, 'N/A', 'N/A', 'N/A', 0, 0, 'bachpan@2019', '', '2425004', 0, 0, 0, '1', 'N/A', 0, 'N/A');
 
 -- --------------------------------------------------------
 
@@ -9769,12 +9857,13 @@ CREATE TABLE `tc` (
 --
 
 INSERT INTO `tc` (`TCNO`, `adm_no`, `RegistrationNo`, `BoardRollNo`, `Name`, `Mother_NM`, `Father_NM`, `Nation`, `Category`, `ADM_DATE`, `ADM_CLASS`, `BIRTH_DT`, `current_Class`, `TEXT08a`, `text08b`, `combo09`, `textsub1`, `textsub2`, `textsub3`, `textsub4`, `textsub5`, `textsub6`, `textsub7`, `combo011`, `datacombo011`, `txtClsW`, `combo12a`, `combo012b`, `combo013`, `text014`, `text015`, `combo016`, `text017`, `combo018`, `text019`, `text020`, `text021`, `text022`, `dob_inwords`, `Tc_Status`, `duplicate_issue`, `session_year`) VALUES
-('BCH/23-24/1', '216731', NULL, NULL, 'AAVYA MAHESWARI', NULL, 'SURESH SABOO', NULL, NULL, '2022-08-11', NULL, '2019-12-10', 'Nursery', 'PASSED', '', NULL, 'C/O SHYAM LAL SABOO NEAR RAM MANDIR UPPER CHUTIA , RANCHI', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', NULL, NULL, 'Yes', NULL, 'GOOD', '2024-03-21', '2024-03-21', 'HIGHER EDUCATION', 'ACTIVE', 'Ten  December Two Thousand Nineteen  ', 'TC_ISSUE', 2, '2023-2024'),
+('BCH/23-24/1', '216731', NULL, NULL, 'AAVYA MAHESWARI', NULL, 'SURESH SABOO', NULL, NULL, '2022-08-11', NULL, '2019-12-10', 'Nursery', 'PASSED', '', NULL, 'C/O SHYAM LAL SABOO NEAR RAM MANDIR UPPER CHUTIA , RANCHI', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', NULL, NULL, 'Yes', NULL, 'GOOD', '2024-03-21', '2024-03-21', 'HIGHER EDUCATION', 'ACTIVE', 'Ten  December Two Thousand Nineteen  ', 'TC_ISSUE', 3, '2023-2024'),
 ('BCH/23-24/2', '183887', NULL, NULL, 'ADITYA VISHWAKARMA', NULL, 'VIVEK VISHWAKARMA ', NULL, NULL, '2022-05-02', NULL, '2018-07-15', 'Prep', 'PASSED', '', NULL, 'H.NO - 26Y ANANTPUR CHUTIA RANCHI', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', NULL, NULL, 'Yes', NULL, 'GOOD', '2024-03-21', '2024-03-21', 'HIGHER EDUCATION', 'ACTIVE', 'Fifteen  July Two Thousand Eighteen  ', 'TC_ISSUE', 2, '2023-2024'),
 ('BCH/24-25/3', '14305', NULL, NULL, 'RISHABH JAIN', NULL, 'SKJ', NULL, NULL, '2024-10-15', NULL, '2000-03-30', 'Baby Pre-Nursery', 'PASSED', '', NULL, 'OVER BRIDGE', 'RANCHI', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', NULL, NULL, 'Yes', NULL, 'GOOD', '2024-10-15', '2024-10-30', 'HIGHER EDUCATION', 'ACTIVE', 'Thirty   March Two Thousand ', 'TC_ISSUE', 1, '2024-2025'),
 ('BCH/24-25/4', '216738', NULL, NULL, 'SHASHI PANDEY', NULL, 'NIRAJ KUMAR PANDEY', NULL, NULL, '2023-01-16', NULL, '2020-08-25', 'Pre-Nursery', 'PASSED', '', NULL, 'KRISHNAPURI ROAD NO. 6 CHUTIA ', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', NULL, NULL, 'Yes', NULL, 'GOOD', '2024-10-31', '2024-10-31', 'HIGHER EDUCATION', 'ACTIVE', 'Twenty Five  August Two Thousand Twenty  ', 'TC_ISSUE', 0, '2024-2025'),
 ('BCH/24-25/5', '216757', NULL, NULL, 'ANAY RAJ', NULL, 'SHAMBHU KUMAR', NULL, NULL, '2023-02-27', NULL, '2020-10-01', 'Baby Pre-Nursery', 'PASSED', '', NULL, 'NEW AMRAWATI COLONY, NEAR RAILWAY COLONY ,CHUTIA , RANCHI', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', NULL, NULL, 'Yes', NULL, 'BRIGHT STUDENT', '2024-10-31', '2024-10-31', 'HIGHER EDUCATION', 'ACTIVE', 'One  October Two Thousand Twenty  ', 'TC_ISSUE', 0, '2024-2025'),
-('BCH/24-25/6', '216738D', NULL, NULL, 'DUMMY', NULL, 'NIRAJ KUMAR PANDEY', NULL, NULL, '2023-01-16', NULL, '2020-08-25', 'Baby Pre-Nursery', 'PASSED', '', NULL, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', NULL, NULL, 'Yes', NULL, 'GOOD', '2024-10-11', '2024-10-26', 'HIGHER EDUCATION', 'ACTIVE', 'Twenty Five  August Two Thousand Twenty  ', 'TC_ISSUE', 0, '2023-2024');
+('BCH/24-25/6', '216738D', NULL, NULL, 'DUMMY', NULL, 'NIRAJ KUMAR PANDEY', NULL, NULL, '2023-01-16', NULL, '2020-08-25', 'Baby Pre-Nursery', 'PASSED', '', NULL, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', NULL, NULL, 'Yes', NULL, 'GOOD', '2024-10-11', '2024-10-26', 'HIGHER EDUCATION', 'ACTIVE', 'Twenty Five  August Two Thousand Twenty  ', 'TC_ISSUE', 0, '2023-2024'),
+('BCH/24-25/9', '2425004', NULL, NULL, 'MEOWW', NULL, 'DASDASD', NULL, NULL, '2022-02-01', NULL, '2024-11-21', 'Baby Pre-Nursery', 'PASSED', '', NULL, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', NULL, NULL, 'Yes', NULL, 'GOOD', '2024-11-16', '2024-11-29', 'PARENT\'S WISH', 'ACTIVE', 'Twenty One  November Two Thousand Twenty Four  ', 'TC_ISSUE', 0, '2024-2025');
 
 -- --------------------------------------------------------
 
@@ -10803,7 +10892,7 @@ ALTER TABLE `wing_master`
 -- AUTO_INCREMENT for table `application`
 --
 ALTER TABLE `application`
-  MODIFY `app_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `app_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT for table `att_temp_save`
@@ -10833,7 +10922,7 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT for table `feegeneration`
 --
 ALTER TABLE `feegeneration`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=203;
 
 --
 -- AUTO_INCREMENT for table `feegeneration_2324`

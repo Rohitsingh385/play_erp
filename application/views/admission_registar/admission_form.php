@@ -52,12 +52,12 @@
 		<div class='col col-8 my-5' id='main'>
 			<div class="card border-danger" style="font-size:14px;">
 				<div class="card-header text-center">
-					<img src="<?php echo base_url(); ?>assets/school_logo/logo_neev.png" width="60px" height="60px"><br>
-					<h2><span style='color: blue'>N</span>
+					<img src="<?php echo base_url(); ?>assets/school_logo/logo.png" width="170px" height="170px"><br>
+					<!-- <h2><span style='color: blue'>N</span>
 						<span style='color: red'>E</span>
 						<span style='color: green'>E</span>
 						<span style='color: blue'>V</span>
-					</h2>
+					</h2> -->
 					<p><?php echo $school_setting[0]->School_Address; ?></p>
 				</div>
 				<div class="card-body">

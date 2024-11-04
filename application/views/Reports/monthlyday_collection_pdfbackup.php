@@ -126,7 +126,7 @@ if ($collectioncounter == '%') {
 <html>
 
 <head>
-	<title>Daily Collection Report</title>
+	<title>Monthly Collection Report</title>
 	<style>
 		table {
 			border-collapse: collapse;
@@ -134,58 +134,56 @@ if ($collectioncounter == '%') {
 
 		* {
 			font-size: 12px;
-			font-weight: 0;
+			font-weight: bold;
 		}
 
 		table tr th,
 		td {
 			font-size: 11px !important;
-			padding: 5px !important;
+			padding: 3px !important;
 
 		}
 
 		@page {
-			margin: 20px 5px 10px 20px;
+			margin: 5px 5px 5px 20px;
 		}
 	</style>
 </head>
 
 <body>
 	<div>
-		<!-- <p style='float:right; font-size:12px;'>Report Generation Date:<?php //echo date('d-M-Y'); 
-																			?></p><br /><br><br> -->
+		<span style='float:right; font-size:15px;'>Report Generation Date:<?php echo date('d-M-Y'); ?></span>
 		<center>
-			<h3 style='font-size:30px;'><?php echo $School_Name; ?></h3><br><br>
-			<p style='font-size:22px; position:relative; top:-10px;'><?php echo $School_Address; ?>&nbsp;(<?php echo $School_Session; ?>)</p><br><br><br><br>
-			<!-- <p style='font-size:22px; position:relative; top:-25px;'>Session&nbsp;(<?php echo $School_Session; ?>)</p><br><br><br> -->
-			<p style='font-size:22px;position:relative;;top:-35px;'>Daily Collection Report As On&nbsp; <?php echo date('d-M-Y', strtotime($date_type)); ?></p>
+			<h1 style='font-size:30px;'><?php echo $School_Name; ?></h1>
+			<p style='font-size:22px; position:relative; top:-15px;'><?php echo $School_Address; ?></p>
+			<p style='font-size:22px; position:relative; top:-25px;'>Session (<?php echo $School_Session; ?>)</p>
 		</center>
 	</div>
-	<br><br>
+	<table width='100%' style='margin-bottom:5px;border-bottom:1px solid black'>
+		<tr>
+			<th style='font-size:18px!important;'>Fee Collection Type:- <?php echo $fee; ?></th>
+			<th width='50%' style='font-size:18px!important;'>
+				<center>Monthly Collection Report from <?php echo date('d-M-Y', strtotime($date_type)) . ' to ' . date('d-M-Y', strtotime($date_type_from)); ?></center>
+			</th>
+			<th style='font-size:18px!important;'>Collected By:- <?php echo $counter; ?></th>
+		</tr>
+	</table>
+	
+	<br><br><br><br><br>
 
-	<br><br><br>
 
-	<br><br><br>
-	<br><br>
-
-
-
-
-
-	<hr>
-	<div>
 	<table border='1'>
 		<thead>
 			<tr>
-				<th>Sl. No.</th>
-				<th>Receipt No.</th>
+				<th>S.NO</th>
+				<th>Receipt Number</th>
+				<th>Receipt Date</th>
 				<th>Student Name</th>
-				<th>Adm. No.</th>
-				<th>Class</th>
+				<th>Adm No</th>
+				<th>Class/Sec</th>
 				<th>Roll No</th>
 				<th>Month Details</th>
 				<th>Total Amount</th>
-
 				<?php if ($feehead1 != '' && $feehead1 != '-') { ?>
 					<th><?php echo $feehead1; ?></th>
 				<?php } ?>
@@ -262,7 +260,6 @@ if ($collectioncounter == '%') {
 					<th><?php echo $feehead25; ?></th>
 				<?php } ?>
 				<th>Payment Mode</th>
-
 			</tr>
 		</thead>
 		<tbody>
@@ -294,11 +291,12 @@ if ($collectioncounter == '%') {
 				$f23 = 0;
 				$f24 = 0;
 				$f25 = 0;
+				
+
 				$i = 1;
 				$card = 0;
 				$cash = 0;
 				$cheque = 0;
-				$upi = 0;
 				$cancel = 0;
 				$online = 0;
 				foreach ($data1 as $data_type) {
@@ -306,97 +304,89 @@ if ($collectioncounter == '%') {
 					<tr>
 						<td><?php echo $i; ?></td>
 						<td><?php echo $data_type->RECT_NO; ?></td>
-
+						<td><?php echo $data_type->RECT_DATE; ?></td>
 						<td><?php echo $data_type->STU_NAME; ?></td>
 						<td><?php echo $data_type->ADM_NO; ?></td>
-						<td><?php echo $data_type->CLASS; ?></td>
-						<td> <?php
-								if ($student[$i]->ROLL_NO  ==  0) {
-									echo '--';
-								} else {
-									echo $student[$i]->ROLL_NO;
-								}
-								?></td>
+						<td><?php echo $data_type->CLASS . "/" . $data_type->SEC; ?></td>
+						<td><?php echo $data_type->ROLL_NO; ?></td>
 						<td><?php echo $data_type->PERIOD; ?></td>
 						<td><?php echo $data_type->TOTAL; ?></td>
-
 						<?php if ($feehead1 != '' && $feehead1 != '-') { ?>
-							<th><?php echo $data_type->Fee1; ?></th>
-						<?php } ?>
-						<?php if ($feehead2 != '' && $feehead2 != '-') { ?>
-							<th><?php echo $data_type->Fee2; ?></th>
-						<?php } ?>
-						<?php if ($feehead3 != '' && $feehead3 != '-') { ?>
-							<th><?php echo $data_type->Fee3; ?></th>
-						<?php } ?>
-						<?php if ($feehead4 != '' && $feehead4 != '-') { ?>
-							<th><?php echo $data_type->Fee4; ?></th>
-						<?php } ?>
-						<?php if ($feehead5 != '' && $feehead5 != '-') { ?>
-							<th><?php echo $data_type->Fee5; ?></th>
-						<?php } ?>
-						<?php if ($feehead6 != '' && $feehead6 != '-') { ?>
-							<th><?php echo $data_type->Fee6; ?></th>
-						<?php } ?>
-						<?php if ($feehead7 != '' && $feehead7 != '-') { ?>
-							<th><?php echo $data_type->Fee7; ?></th>
-						<?php } ?>
-						<?php if ($feehead8 != '' && $feehead8 != '-') { ?>
-							<th><?php echo $data_type->Fee8; ?></th>
-						<?php } ?>
-						<?php if ($feehead9 != '' && $feehead9 != '-') { ?>
-							<th><?php echo $data_type->Fee9; ?></th>
-						<?php } ?>
-						<?php if ($feehead10 != '' && $feehead10 != '-') { ?>
-							<th><?php echo $data_type->Fee10; ?></th>
-						<?php } ?>
-						<?php if ($feehead11 != '' && $feehead11 != '-') { ?>
-							<th><?php echo $data_type->Fee11; ?></th>
-						<?php } ?>
-						<?php if ($feehead12 != '' && $feehead12 != '-') { ?>
-							<th><?php echo $data_type->Fee12; ?></th>
-						<?php } ?>
-						<?php if ($feehead13 != '' && $feehead13 != '-') { ?>
-							<th><?php echo $data_type->Fee13; ?></th>
-						<?php } ?>
-						<?php if ($feehead14 != '' && $feehead14 != '-') { ?>
-							<th><?php echo $data_type->Fee14; ?></th>
-						<?php } ?>
-						<?php if ($feehead15 != '' && $feehead15 != '-') { ?>
-							<th><?php echo $data_type->Fee15; ?></th>
-						<?php } ?>
-						<?php if ($feehead16 != '' && $feehead16 != '-') { ?>
-							<th><?php echo $data_type->Fee16; ?></th>
-						<?php } ?>
-						<?php if ($feehead17 != '' && $feehead17 != '-') { ?>
-							<th><?php echo $data_type->Fee17; ?></th>
-						<?php } ?>
-						<?php if ($feehead18 != '' && $feehead18 != '-') { ?>
-							<th><?php echo $data_type->Fee18; ?></th>
-						<?php } ?>
-						<?php if ($feehead19 != '' && $feehead19 != '-') { ?>
-							<th><?php echo $data_type->Fee19; ?></th>
-						<?php } ?>
-						<?php if ($feehead20 != '' && $feehead20 != '-') { ?>
-							<th><?php echo $data_type->Fee20; ?></th>
-						<?php } ?>
-						<?php if ($feehead21 != '' && $feehead21 != '-') { ?>
-							<th><?php echo $data_type->Fee21; ?></th>
-						<?php } ?>
-						<?php if ($feehead22 != '' && $feehead22 != '-') { ?>
-							<th><?php echo $data_type->Fee22; ?></th>
-						<?php } ?>
-						<?php if ($feehead23 != '' && $feehead23 != '-') { ?>
-							<th><?php echo $data_type->Fee23; ?></th>
-						<?php } ?>
-						<?php if ($feehead24 != '' && $feehead24 != '-') { ?>
-							<th><?php echo $data_type->Fee24; ?></th>
-						<?php } ?>
-						<?php if ($feehead25 != '' && $feehead25 != '-') { ?>
-							<th><?php echo $data_type->Fee25; ?></th>
-						<?php } ?>
-
-						<td><?php echo $data_type->Payment_Mode; ?></td>
+									<td><?php echo $data_type->Fee1; ?></td>
+								<?php } ?>
+								<?php if ($feehead2 != '' && $feehead2 != '-') { ?>
+									<td><?php echo $data_type->Fee2; ?></td>
+								<?php } ?>
+								<?php if ($feehead3 != '' && $feehead3 != '-') { ?>
+									<td><?php echo $data_type->Fee3; ?></td>
+								<?php } ?>
+								<?php if ($feehead4 != '' && $feehead4 != '-') { ?>
+									<td><?php echo $data_type->Fee4; ?></td>
+								<?php } ?>
+								<?php if ($feehead5 != '' && $feehead5 != '-') { ?>
+									<td><?php echo $data_type->Fee5; ?></td>
+								<?php } ?>
+								<?php if ($feehead6 != '' && $feehead6 != '-') { ?>
+									<td><?php echo $data_type->Fee6; ?></td>
+								<?php } ?>
+								<?php if ($feehead7 != '' && $feehead7 != '-') { ?>
+									<td><?php echo $data_type->Fee7; ?></td>
+								<?php } ?>
+								<?php if ($feehead8 != '' && $feehead8 != '-') { ?>
+									<td><?php echo $data_type->Fee8; ?></td>
+								<?php } ?>
+								<?php if ($feehead9 != '' && $feehead9 != '-') { ?>
+									<td><?php echo $data_type->Fee9; ?></td>
+								<?php } ?>
+								<?php if ($feehead10 != '' && $feehead10 != '-') { ?>
+									<td><?php echo $data_type->Fee10; ?></td>
+								<?php } ?>
+								<?php if ($feehead11 != '' && $feehead11 != '-') { ?>
+									<td><?php echo $data_type->Fee11; ?></td>
+								<?php } ?>
+								<?php if ($feehead12 != '' && $feehead12 != '-') { ?>
+									<td><?php echo $data_type->Fee12; ?></td>
+								<?php } ?>
+								<?php if ($feehead13 != '' && $feehead13 != '-') { ?>
+									<td><?php echo $data_type->Fee13; ?></td>
+								<?php } ?>
+								<?php if ($feehead14 != '' && $feehead14 != '-') { ?>
+									<td><?php echo $data_type->Fee14; ?></td>
+								<?php } ?>
+								<?php if ($feehead15 != '' && $feehead15 != '-') { ?>
+									<td><?php echo $data_type->Fee15; ?></td>
+								<?php } ?>
+								<?php if ($feehead16 != '' && $feehead16 != '-') { ?>
+									<td><?php echo $data_type->Fee16; ?></td>
+								<?php } ?>
+								<?php if ($feehead17 != '' && $feehead17 != '-') { ?>
+									<td><?php echo $data_type->Fee17; ?></td>
+								<?php } ?>
+								<?php if ($feehead18 != '' && $feehead18 != '-') { ?>
+									<td><?php echo $data_type->Fee18; ?></td>
+								<?php } ?>
+								<?php if ($feehead19 != '' && $feehead19 != '-') { ?>
+									<td><?php echo $data_type->Fee19; ?></td>
+								<?php } ?>
+								<?php if ($feehead20 != '' && $feehead20 != '-') { ?>
+									<td><?php echo $data_type->Fee20; ?></td>
+								<?php } ?>
+								<?php if ($feehead21 != '' && $feehead21 != '-') { ?>
+									<td><?php echo $data_type->Fee21; ?></td>
+								<?php } ?>
+								<?php if ($feehead22 != '' && $feehead22 != '-') { ?>
+									<td><?php echo $data_type->Fee22; ?></td>
+								<?php } ?>
+								<?php if ($feehead23 != '' && $feehead23 != '-') { ?>
+									<td><?php echo $data_type->Fee23; ?></td>
+								<?php } ?>
+								<?php if ($feehead24 != '' && $feehead24 != '-') { ?>
+									<td><?php echo $data_type->Fee24; ?></td>
+								<?php } ?>
+								<?php if ($feehead25 != '' && $feehead25 != '-') { ?>
+									<td><?php echo $data_type->Fee25; ?></td>
+								<?php } ?>
+								<td><?php echo $data_type->Payment_Mode; ?></td>
 
 					</tr>
 			<?php
@@ -426,16 +416,15 @@ if ($collectioncounter == '%') {
 					$f22 = $f22 + $data_type->Fee22;
 					$f23 = $f23 + $data_type->Fee23;
 					$f24 = $f24 + $data_type->Fee24;
-					$f25 = $f25 + $data_type->Fee25;
+					$f24 = $f25 + $data_type->Fee25;
+
 
 					if ($data_type->Payment_Mode == 'CASH') {
 						$cash = $cash + $data_type->TOTAL;
 					} elseif ($data_type->Payment_Mode == 'CARD SWAP') {
 						$card = $card + $data_type->TOTAL;
-					} elseif ($data_type->Payment_Mode == 'CHEQUE') {
-						$cheque = $cheque + $data_type->TOTAL;
 					} elseif ($data_type->Payment_Mode == 'UPI') {
-						$upi = $upi + $data_type->TOTAL;
+						$cheque = $cheque + $data_type->TOTAL;
 					} elseif ($data_type->Payment_Mode == 'ONLINE' || $data_type->Payment_Mode == 'Online') {
 						$online = $online + $data_type->TOTAL;
 					} else {
@@ -489,7 +478,7 @@ if ($collectioncounter == '%') {
 			}
 			?>
 			<tr>
-				
+				<td></td>
 				<td></td>
 				<td></td>
 				<td></td>
@@ -577,16 +566,14 @@ if ($collectioncounter == '%') {
 			</tr>
 		</tbody>
 	</table>
-	</div><br><br><br><br><br><br><br><br><br><br><br><br>
-	<br><br><br><br><br><br><br><br><br><br><br><br>
-	<!-- <div style='page-break-after: always;'></div> -->
-	<p style='font-size:20px!important;'><u>Collection Statement Summary</u></p><br><br><br><br>
-	<div style="height:300px; width:800px; position:relative; top:px;">
+	<div style='page-break-after: always;'></div>
+	<p style='font-size:20px!important;'>Collection Statement Summary</p>
+	<div style="height:300px; width:800px; position:relative; top:-10px;">
 		<table>
-			<!-- <tr>
-		<td style='font-size:18px!important;'>Total Cancelled Receipt</td>
-		<td style='font-size:18px!important;'>:&nbsp;<?php echo $cancel; ?></td>
-	</tr> -->
+			<tr>
+				<td style='font-size:18px!important;'>Total Cancelled Receipt</td>
+				<td style='font-size:18px!important;'>:&nbsp;<?php echo $cancel; ?></td>
+			</tr>
 			<tr>
 				<td style='font-size:18px!important;'>Total Collection</td>
 				<td style='font-size:18px!important;'>:&nbsp;<?php echo $t; ?></td>
@@ -596,16 +583,12 @@ if ($collectioncounter == '%') {
 				<td style='font-size:18px!important;'>:&nbsp;<?php echo $amtinword; ?></td>
 			</tr>
 		</table>
-		<br /><br />
-		<caption style='font-size:18px!important;'>
-			<h4>Amount Collection By Card/Cash/Cheque/Online</h4>
-		</caption><br><br><br>
+		<hr>
 		<table border="1" width="100%">
-			<!-- <caption style='font-size:18px!important;' >Amount Collection By Card/Cash/Cheque/Online</caption><br><br><br> -->
+			<caption style='font-size:18px!important;'>Amount Collection By Card/Cash/UPI/Online</caption>
 			<tr>
 				<th style='font-size:18px!important;'>CASH</th>
 				<th style='font-size:18px!important;'>CARD</th>
-				<th style='font-size:18px!important;'>CHEQUE</th>
 				<th style='font-size:18px!important;'>UPI</th>
 				<th style='font-size:18px!important;'>ONLINE</th>
 			</tr>
@@ -613,54 +596,47 @@ if ($collectioncounter == '%') {
 				<td style='font-size:18px!important;'><?php echo $cash; ?></td>
 				<td style='font-size:18px!important;'><?php echo $card; ?></td>
 				<td style='font-size:18px!important;'><?php echo $cheque; ?></td>
-				<td style='font-size:18px!important;'><?php echo $upi; ?></td>
 				<td style='font-size:18px!important;'><?php echo $online; ?></td>
 			</tr>
 		</table>
-		<br>
 		<table>
 			<tr>
-				<td style='font-size:18px!important;'>Total Cancelled Receipt</td>
-				<td style='font-size:18px!important;'>:&nbsp;<?php echo $cancel; ?></td>
+				<td style='font-size:18px!important;'>Cash at Bank</td>
+				<td style='font-size:18px!important;'>: Rs__________________________________________</td>
+			</tr>
+			<tr>
+				<td style='font-size:18px!important;'>Cash in Hand</td>
+				<td style='font-size:18px!important;'>: Rs__________________________________________</td>
+			</tr>
+			<tr>
+				<td style='font-size:18px!important;'>Date of Deposit</td>
+				<td style='font-size:18px!important;'>: __________/__________/_________</td>
 			</tr>
 		</table>
-
-		<!-- <table>
-	<tr>
-		<td style='font-size:18px!important;' >Cash deposited in Bank</td>
-		<td style='font-size:18px!important;' >: Rs__________________________________________</td>
-	</tr>
-	<tr>
-		<td style='font-size:18px!important;' >Cash in Hand</td>
-		<td style='font-size:18px!important;' >: Rs__________________________________________</td>
-	</tr>
-	<tr>
-		<td style='font-size:18px!important;'>Date of Deposit</td>
-		<td style='font-size:18px!important;'>: __________/__________/_________</td>
-	</tr>
-</table> -->
 	</div>
-	<!-- <div style="height:300px; width:700px; position:relative; float:right; top:-309px;">
-    <div style='border:1px solid black;'>
-	<br />
-		<table>
-			<tr>
-				<td style='font-size:18px!important;'>Rs.____________________________________</td>
-			</tr>
-			<tr>
-				<td style='font-size:18px!important;'>In Custody of :______________________</td>
-			</tr>
-			<tr>
-				<td><br /><td>
-			</tr>
-			<tr>
-				<td style='font-size:18px!important;'><center>Signature</center></td>
-			</tr>
-		</table>
-    </div>
-</div> -->
-
-	<br /><br /><br /><br />
+	<div style="height:300px; width:700px; position:relative; float:right; top:-309px;">
+		<div style='border:1px solid black;'>
+			<br />
+			<table>
+				<tr>
+					<td style='font-size:18px!important;'>Rs.____________________________________</td>
+				</tr>
+				<tr>
+					<td style='font-size:18px!important;'>In Custody of :______________________</td>
+				</tr>
+				<tr>
+					<td><br />
+					<td>
+				</tr>
+				<tr>
+					<td style='font-size:18px!important;'>
+						<center>Signature</center>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<br /><br />
 	<table width="100%">
 		<tr>
 			<td style='font-size:15px!important;'>
@@ -675,7 +651,6 @@ if ($collectioncounter == '%') {
 			</td>
 		</tr>
 	</table>
-	<p style='float:right; font-size:12px;'>Report Generation Date:<?php echo date('d-M-Y'); ?></p>
 </body>
 
 </html>

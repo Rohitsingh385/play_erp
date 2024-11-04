@@ -154,16 +154,16 @@ if ($collectioncounter == '%') {
 	<div>
 		<span style='float:right; font-size:15px;'>Report Generation Date:<?php echo date('d-M-Y'); ?></span>
 		<center>
-			<h1 style='font-size:30px;'><?php echo $School_Name; ?></h1>
-			<p style='font-size:22px; position:relative; top:-15px;'><?php echo $School_Address; ?></p>
-			<p style='font-size:22px; position:relative; top:-25px;'>Session (<?php echo $School_Session; ?>)</p>
+			<h1 style='font-size:30px;'><?php echo $School_Name; ?></h1><br><br>
+			<p style='font-size:22px; position:relative; top:-15px;'><?php echo $School_Address; ?></p><br><br><br>
+			<p style='font-size:22px; position:relative; top:-25px;'>Session (<?php echo $School_Session; ?>)</p><br><br><br><br>
 		</center>
-	</div>
+	</div><br><br><br><br><br><br><br><br>
 	<table width='100%' style='margin-bottom:5px;border-bottom:1px solid black'>
 		<tr>
 			<th style='font-size:18px!important;'>Fee Collection Type:- <?php echo $fee; ?></th>
 			<th width='50%' style='font-size:18px!important;'>
-				<center>Monthly Collection Report from <?php echo date('d-M-Y', strtotime($date_type)) . ' to ' . date('d-M-Y', strtotime($date_type_from)); ?></center>
+				<center>Monthly Collection Report from <?php echo date('d-M-Y', strtotime($date_type)) . ' to ' . date('d-M-Y', strtotime($date_type_from)); ?></center><br>
 			</th>
 			<th style='font-size:18px!important;'>Collected By:- <?php echo $counter; ?></th>
 		</tr>
@@ -565,11 +565,11 @@ if ($collectioncounter == '%') {
 		</tbody>
 	</table>
 	<div style='page-break-after: always;'></div>
-	<p style='font-size:20px!important;'>Collection Statement Summary</p>
+	<p style='font-size:20px!important;'>Collection Statement Summary</p><br><br><br>
 	<div style="height:300px; width:800px; position:relative; top:-10px;">
 		<table>
 			<tr>
-				<td style='font-size:18px!important;'>Total Cancelled Receipt</td>
+				<td style='font-size:18px!important;'>Total Cancelled Receipt</td><br>
 				<td style='font-size:18px!important;'>:&nbsp;<?php echo $cancel; ?></td>
 			</tr>
 			<tr>
@@ -582,8 +582,9 @@ if ($collectioncounter == '%') {
 			</tr>
 		</table>
 		<hr>
+		<caption style='font-size:18px!important;'>Amount Collection By Card/Cash/UPI/Online</caption><br><br>
 		<table border="1" width="100%">
-			<caption style='font-size:18px!important;'>Amount Collection By Card/Cash/UPI/Online</caption>
+			
 			<tr>
 				<th style='font-size:18px!important;'>CASH</th>
 				<th style='font-size:18px!important;'>CARD</th>

@@ -639,50 +639,7 @@ if($sibling_details){
                     
                  </div>
              </div>
-             <div class="row">
-                 <div class="col-sm-6 col-md-6 col-lg-6">
-                     <h4 class="text-center text-info">Third Sibling Details</h4>
-                     <div class="form-group">
-                        <label>Sibling Name</label>
-                        <input type="text" class="form-control" readonly value="<?php echo $Name3; ?>">
-                    </div>
-                    <div class="form-group">
-                        <label>Sex</label>
-                        <input type="text" class="form-control" readonly value="<?php echo $Sex2; ?>">
-                    </div>
-                    <div class="form-group">
-                        <label>Date of Birth</label>
-                        <input type="text" class="form-control" readonly value="<?php echo $DOB3; ?>">
-                    </div>
-                    <div class="form-group">
-                    <label>Admission No. </label><br><span class="text-danger"> (Only if in this School)</span><br>
-                    <input type="text" class="form-control" readonly value="<?php echo $Adm3; ?>">
-                        
-                    </div>
-                 
-                 </div>
-                 <div class="col-md-6 col-lg-6 col-sm-6"> 
-                     <h4 class="text-center text-info">Fourth Sibling Details</h4>
-                     <div class="form-group">
-                        <label>Sibling Name</label>
-                        <input type="text" class="form-control" readonly value="<?php echo $Name4; ?>">
-                    </div>
-                    <div class="form-group">
-                        <label>Sex</label>
-                       <input type="text" class="form-control"  readonly value="<?php echo $Sex2; ?>">
-                    </div>
-                    <div class="form-group">
-                        <label>Date of Birth</label>
-                        <input type="text" class="form-control" readonly value="<?php echo $DOB4; ?>">
-                    </div>
-                    <div class="form-group">
-                        <label>Admission No. </label><br><span class="text-danger"> (Only if in this School)</span><br>
-                        <input type="text" class="form-control" readonly value="<?php echo $Adm3; ?>">
-                        
-                    </div>
-               
-                 </div>
-             </div>         
+            
             </div>
             <!-- SUBJECT DETAILS OF STUDENT-->
             <!--<div class="tab-pane" id="tab5">

@@ -69,21 +69,12 @@ if ($School_setting) {
 
     <img  class="pull-right" src="<?php echo $School_setting[0]->SCHOOL_LOGO; ?>" id="img"style="width:100px; margin-bottom:15px;">
     <!-- <p style='float:right; font-size:15px; margin-top:-25px;'>Report Generation Date:<?php echo date('d-m-y'); ?></p><br /> -->
-    <table width="100%" style="float:right;">
-        <tr>
-            <td id="tp-header">
-                <center><?php echo $School_setting[0]->School_Name; ?><center>
-            </td>
-        </tr>
-        <tr>
-            <td id="mid-header">
-                <center><?php echo $School_setting[0]->School_Address; ?><center>
-            </td>
-        </tr>
-        <tr>
-            <th style="text-align:center;background-color:;color: !important;">&nbsp;Defaulter List Of Class&nbsp;<?php echo $classs[0]->class_nm; ?>&nbsp;FOR <?php echo $viewupto; ?></th>
-    </tr>
-    </table><br /><br /><br /><br />
+
+		
+		<h1 style="text-align:center;"><?php echo $School_setting[0]->School_Name; ?></h1><br><br>
+		<h2 style="text-align:center;"><?php echo $School_setting[0]->School_Address; ?></h2><br><br><br>
+		            <h5 style="text-align:center;margin-right:60px;center;background-color:;color: !important;">&nbsp;Defaulter List Of Class&nbsp;<?php echo $classs[0]->class_nm; ?>&nbsp;FOR <?php echo $viewupto; ?></h5>
+		<br /><br />
     <hr>
     <div class='row'>
         <div class='col-md-12 col-xl-12 col-sm-12'>

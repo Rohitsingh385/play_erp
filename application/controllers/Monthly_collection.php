@@ -281,6 +281,11 @@ class Monthly_collection extends MY_controller{
 		if($mar_check == 1){
 			$month_app[] = 'MAR';
 		}
+
+		
+
+
+
 		$array = array(
 			'student_data' => $stu_data,
 			'master' => $master,
@@ -468,7 +473,7 @@ class Monthly_collection extends MY_controller{
 
 								if ($l_status == 1) {
 
-									if ($diff < 0) {
+									if ($diff > 0) {
 
 										$late_fee = $l_late_amount;
 									} elseif ($diff = 0) {
@@ -606,7 +611,7 @@ class Monthly_collection extends MY_controller{
 
 								if ($l_status == 1) {
 
-									if ($diff < 0) {
+									if ($diff > 0) {
 
 										$late_fee = $l_late_amount;
 									} elseif ($diff = 0) {
@@ -756,7 +761,7 @@ class Monthly_collection extends MY_controller{
 
 							if ($l_status == 1) {
 
-								if ($diff < 0) {
+								if ($diff > 0) {
 
 									$late_fee = $l_late_amount;
 								} elseif ($diff = 0) {
@@ -850,7 +855,7 @@ class Monthly_collection extends MY_controller{
 
 							if ($l_status == 1) {
 
-								if ($diff < 0) {
+								if ($diff > 0) {
 
 									$late_fee = $l_late_amount;
 								} elseif ($diff = 0) {
@@ -967,7 +972,7 @@ class Monthly_collection extends MY_controller{
 
 							if ($l_status == 1) {
 
-								if ($diff < 0) {
+								if ($diff > 0) {
 
 									$late_fee = $l_late_amount;
 								} elseif ($diff = 0) {
@@ -1050,18 +1055,18 @@ class Monthly_collection extends MY_controller{
 							} elseif ($month == 9) {
 								$m = 12;
 							} elseif ($month == 10) {
-								$m = 1;
+								$m = 13;
 							} elseif ($month == 11) {
-								$m = 2;
+								$m = 14;
 							} elseif ($month == 12) {
-								$m = 3;
+								$m = 14;
 							}
 
 							$diff = $current_month - $m;
 
 							if ($l_status == 1) {
 
-								if ($diff < 0) {
+								if ($diff > 0) {
 
 									$late_fee = $l_late_amount;
 								} elseif ($diff = 0) {
@@ -1136,7 +1141,9 @@ class Monthly_collection extends MY_controller{
 		$tot_amt24 = ($final_amount[24] - $data['totFee24']);
 		$tot_amt25 = ($final_amount[25] - $data['totFee25']);
 
-		$total_amount = (($tot_amt1 < 0) ? 0 : $tot_amt1) + (($tot_amt2 < 0) ? 0 : $tot_amt2) + (($tot_amt3 < 0) ? 0 : $tot_amt3) + (($tot_amt4 < 0) ? 0 : $tot_amt4) + (($tot_amt5 < 0) ? 0 : $tot_amt5) + (($tot_amt6 < 0) ? 0 : $tot_amt6) + (($tot_amt7 < 0) ? 0 : $tot_amt7) + (($tot_amt8 < 0) ? 0 : $tot_amt8) + (($tot_amt9 < 0) ? 0 : $tot_amt9) + (($tot_amt10 < 0) ? 0 : $tot_amt10) + (($tot_amt11 < 0) ? 0 : $tot_amt11) + (($tot_amt12 < 0) ? 0 : $tot_amt12) + (($tot_amt13 < 0) ? 0 : $tot_amt13) + (($tot_amt14 < 0) ? 0 : $tot_amt14) + (($tot_amt15 < 0) ? 0 : $tot_amt15) + (($tot_amt16 < 0) ? 0 : $tot_amt16) + (($tot_amt17 < 0) ? 0 : $tot_amt17) + (($tot_amt18 < 0) ? 0 : $tot_amt18) + (($tot_amt19 < 0) ? 0 : $tot_amt19) + (($tot_amt20 < 0) ? 0 : $tot_amt20) + (($tot_amt21 < 0) ? 0 : $tot_amt21) + (($tot_amt22 < 0) ? 0 : $tot_amt22) + (($tot_amt23 < 0) ? 0 : $tot_amt23) + (($tot_amt24 < 0) ? 0 : $tot_amt24) + (($tot_amt25 < 0) ? 0 : $tot_amt25);
+// $total_amount = (($tot_amt1 < 0) ? 0 : $tot_amt1) + (($tot_amt2 < 0) ? 0 : $tot_amt2) + (($tot_amt3 < 0) ? 0 : $tot_amt3) + (($tot_amt4 < 0) ? 0 : $tot_amt4) + (($tot_amt5 < 0) ? 0 : $tot_amt5) + (($tot_amt6 < 0) ? 0 : $tot_amt6) + (($tot_amt7 < 0) ? 0 : $tot_amt7) + (($tot_amt8 < 0) ? 0 : $tot_amt8) + (($tot_amt9 < 0) ? 0 : $tot_amt9) + (($tot_amt10 < 0) ? 0 : $tot_amt10) + (($tot_amt11 < 0) ? 0 : $tot_amt11) + (($tot_amt12 < 0) ? 0 : $tot_amt12) + (($tot_amt13 < 0) ? 0 : $tot_amt13) + (($tot_amt14 < 0) ? 0 : $tot_amt14) + (($tot_amt15 < 0) ? 0 : $tot_amt15) + (($tot_amt16 < 0) ? 0 : $tot_amt16) + (($tot_amt17 < 0) ? 0 : $tot_amt17) + (($tot_amt18 < 0) ? 0 : $tot_amt18) + (($tot_amt19 < 0) ? 0 : $tot_amt19) + (($tot_amt20 < 0) ? 0 : $tot_amt20) + (($tot_amt21 < 0) ? 0 : $tot_amt21) + (($tot_amt22 < 0) ? 0 : $tot_amt22) + (($tot_amt23 < 0) ? 0 : $tot_amt23) + (($tot_amt24 < 0) ? 0 : $tot_amt24) + (($tot_amt25 < 0) ? 0 : $tot_amt25);
+
+		$total_amount = (($tot_amt1 < 0) ? 0 : $tot_amt1) + (($tot_amt2 < 0) ? 0 : $tot_amt2) + (($tot_amt3 < 0) ? 0 : $tot_amt3) + (($tot_amt4 < 0) ? 0 : $tot_amt4) + (($tot_amt5 < 0) ? 0 : $tot_amt5) + (($tot_amt6 < 0) ? 0 : $tot_amt6) + (($tot_amt7 < 0) ? 0 : $tot_amt7) ;
 
 
 		if($total_amount > 0){

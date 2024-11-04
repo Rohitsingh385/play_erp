@@ -80,14 +80,16 @@ class Admission_registar extends MY_Controller
 			'number' => $phone,
 			'address1' => $comm_add,
 			'address2' => $per_add,
-			'status' => '1'
+			'status' => '1',
+			
 		);
-
+		
+		
 		if ($this->dbcon->insert('application', $array)) {
-			echo json_encode(['status' => 1, 'message' => 'Thank You for Your Response! You will be contacted within 24-48 hrs.']);
-			//redirect('Admission_registar/admission_form');
+			echo '<script>alert("Thank You for Your Response! You will be contacted within 24-48 hrs.")</script>';
+			redirect('Admission_registar/admission_form');
 		}else{
-			echo json_encode(['status' => 2, 'message' => 'Failed to submit the form.']);
+			echo '2';
 		}
 	}
 }

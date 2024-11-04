@@ -6,9 +6,9 @@
 	<title>Neev Play School Enquiry Form</title>
 	<!-- Bootstrap CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-	<style>
-		@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&display=swap');
 
+
+	<style>
 		.form-label {
 			font-size: 16px;
 			font-weight: 700;
@@ -21,9 +21,6 @@
 
 		body {
 			background-color: #b3d4fc;
-			font-family: "Playwrite GB S", cursive;
-			font-optical-sizing: auto;
-
 		}
 
 		.card-header {
@@ -53,11 +50,7 @@
 			<div class="card border-danger" style="font-size:14px;">
 				<div class="card-header text-center">
 					<img src="<?php echo base_url(); ?>assets/school_logo/logo.png" width="170px" height="170px"><br>
-					<!-- <h2><span style='color: blue'>N</span>
-						<span style='color: red'>E</span>
-						<span style='color: green'>E</span>
-						<span style='color: blue'>V</span>
-					</h2> -->
+					
 					<p><?php echo $school_setting[0]->School_Address; ?></p>
 				</div>
 				<div class="card-body">
@@ -100,7 +93,7 @@
 									<option value="">Select Class</option>
 								</select>
 							</div>
-
+							
 							<div class="mb-3">
 								<label for="paddress" class="form-label">Permanent Address</label>
 								<textarea class="form-control" id="paddress" name='paddress' rows="3" placeholder="Enter address" required></textarea>
@@ -159,41 +152,41 @@
 			classSelect.innerHTML += '<option value="Prep/Sr.KG">Prep/Sr.KG</option>';
 		}
 	}
-	
 	$("#adm_form").on("submit", function(event) {
-    event.preventDefault();
-
-    $.ajax({
-        url: "<?php echo base_url('Admission_registar/save_admission_form'); ?>",
-        type: "POST",
-        data: $('#adm_form').serialize(),
-        dataType: 'json', 
-        success: function(data) {
-            console.log("Response from server: ", data); 
-            if (data.status === 1) { 
-                Swal.fire({
-                    title: "Thank You for Your Response!",
-                    html: data.message, 
-                    timer: 10000,
-                    timerProgressBar: true,
-                    didOpen: () => {
-                        Swal.showLoading();
-                    },
-                    willClose: () => {
-                        window.location.href = 'http://neevastrongfoundation.org';
-                    },
-                });
-            } else {
-                alert("Error: " + data.message); 
-            }
-        },
-        error: function(xhr, status, error) {
-            console.error("AJAX Error: ", status, error);
-            alert("An error occurred. Please try again.");
-        }
-    });
-});
-
+		event.preventDefault();
+		$.ajax({
+			url: "<?php echo base_url('Admission_registar/save_admission_form'); ?>",
+			type: "POST",
+			data: $('#adm_form').serialize(),
+			success: function(data) {
+				if (data == 1) {
+					Swal.fire({
+						title: "Thank You for Your Response!",
+						html: "You'll be contacted within 24-48 hrs.",
+						timer: 10000,
+						timerProgressBar: true,
+						didOpen: () => {
+							Swal.showLoading();
+							const timer = Swal.getPopup().querySelector("b");
+							timerInterval = setInterval(() => {
+								timer.textContent = `${Swal.getTimerLeft()}`;
+							}, 100);
+						},
+						willClose: () => {
+							clearInterval(timerInterval);
+							window.location.href = 'http://neevastrongfoundation.org';
+						},
+					}).then((result) => {
+						/* Read more about handling dismissals below */
+						if (result.dismiss === Swal.DismissReason.timer) {
+							window.location.href = 'http://neevastrongfoundation.org';
+						}
+					});
+				}
+			},
+		});
+	});
+        
 </script>
 
 </html>

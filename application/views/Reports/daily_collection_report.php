@@ -75,6 +75,7 @@ if ($feehead25) {
 	$feehead25 = $feehead25[0]->FEE_HEAD;
 }
 ?>
+
 <div class='row'>
 	<div class='col-md-12 col-xl-12 col-sm-12'>
 		<div style='overflow:auto;'>

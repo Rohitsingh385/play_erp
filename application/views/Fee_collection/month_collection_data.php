@@ -59,7 +59,7 @@ $id = array('apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec', 'jan'
 		</div>-->
 		<div class="col-md-3 col-sm-3 col-xl-3 form-group">
 			<label>Receipt Date</label>
-			<input type="text" class="form-control" name="rcpt_date" id="rcpt_date" value="<?php echo date("d-M-Y"); ?>" required>
+			<input type="text" class="form-control" name="rcpt_date" id="rcpt_date" readonly value="<?php echo date("Y-m-d"); ?>" required>
 		</div>
 		<input type="hidden" name="adm_no" id="adm_no" readonly class="form-control" value="<?php echo $adm_no; ?>">
 		<input type="hidden" readonly name="adm_date" id="adm_date" value="<?php echo $adm_date; ?>" class="form-control">
@@ -101,7 +101,7 @@ $id = array('apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec', 'jan'
 
 		<div class="col-sm-3 col-md-3 col-xl-3 form-group">
 			<br />
-			<span class="btn btn-success" onclick="show_ledger()"><i class="fa fa-circle-o-notch fa-spin" style="display: none;" id="show_details_l"></i>&nbsp;Show Paid Amounts</span>
+			<span class="btn btn-success" onclick="show_ledger()"><i class="fa fa-circle-o-notch fa-spin" style="display: none;" id="show_details_l"></i>&nbsp;Show Ledger</span>
 			<input type="hidden" readonly name="month_count" id="month_count" class="form-control">
 		</div>
 	</div>
@@ -127,15 +127,15 @@ $id = array('apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec', 'jan'
 					<div class="row">
 						<?php
 						$i = 1;
-						foreach ($month_app as $key => $value) {
+						foreach ($FEE as $key => $value) {
+							if ($value == 'N/A' || $value == '') {
 						?>
 								<div class="col-sm-2 col-md-2 form-group">
-									
-									<input type="checkbox" class="<?php echo $i; ?>" onchange="monthckechk()" name="chkbox[]" value="<?php echo $value; ?>" id="<?php echo strtolower($value); ?>">&nbsp;<?php echo $value; ?>
+									<input type="checkbox" class="<?php echo $i; ?>" onchange="monthckechk()" name="<?php echo $id[$key]; ?>" value="<?php echo $val[$key]; ?>" id="<?php echo $id[$key]; ?>">&nbsp;<?php echo $val[$key]; ?>
 								</div>
 						<?php
 								$i++;
-							
+							}
 						}
 						?>
 					</div>
@@ -165,7 +165,7 @@ $id = array('apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec', 'jan'
 
 			<!-- Modal Header -->
 			<div class="modal-header" style="background: #5785c3; color: #fff; text-align: center;">
-				<h4 class="modal-title">STUDENT'S PAID DETAILS</h4>
+				<h4 class="modal-title">STUDENT LEDGER</h4>
 				<!-- <button type="button" class="close" data-dismiss="modal">×</button> -->
 			</div>
 			<style type="text/css">
@@ -208,13 +208,6 @@ $id = array('apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec', 'jan'
 </div>
 
 <script type="text/javascript">
-	$(function() {
-		$("#rcpt_date").datepicker({
-			dateFormat:  'dd-M-yy',
-			autoclose:true
-		});
-	});
-
 	function show_pay() {
 		$("#myModal1").modal();
 	}
@@ -1322,5 +1315,9 @@ $id = array('apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec', 'jan'
 			return false;
 		}
 
+	});
+	$('#rcpt_date').datepicker({
+		format: 'dd-M-yyyy',
+		autoclose: true
 	});
 </script>

@@ -1,76 +1,60 @@
-<?php 
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Monthly_collection extends MY_controller{
-	public function __construct(){
-		parent:: __construct();
+class Monthly_collection extends MY_controller
+{
+	public function __construct()
+	{
+		parent::__construct();
 		$this->loggedOut();
-	    $this->load->model('Mymodel','dbcon');
-		$this->load->model('Farheen','farheen');
-		$this->load->model('Alam','alam');
+		$this->load->model('Mymodel', 'dbcon');
+		$this->load->model('Farheen', 'farheen');
+		$this->load->model('Alam', 'alam');
 	}
 
 	public function month_collection()
 	{
-		$stu_adm = $this->dbcon->select('student','ADM_NO',"Student_Status='ACTIVE'");
+		$stu_adm = $this->dbcon->select('student', 'ADM_NO', "Student_Status='ACTIVE'");
 		$array = array(
 			'stu_adm' => $stu_adm
 		);
-		$this->fee_template('Fee_collection/monthly_collection',$array);
+		$this->fee_template('Fee_collection/monthly_collection', $array);
 	}
 
 	public function monthly_adm_data()
 	{
 		$adm_no = $this->input->post('val');
-		$stu_data = $this->dbcon->select('student','*',"ADM_NO='$adm_no' AND Student_Status='ACTIVE'");
-		if(!empty($stu_data)){
+		$stu_data = $this->dbcon->select('student', '*', "ADM_NO='$adm_no' AND Student_Status='ACTIVE'");
+		if (!empty($stu_data)) {
 			$stu_id = $stu_data[0]->STUDENTID;
-		}else{
+		} else {
 			$stu_id = "n/a";
 		}
-		$pre_dues = $this->dbcon->select('previous_year_feegeneration','sum(TOTAL)TOTAL',"ADM_NO='$adm_no'");
+		$pre_dues = $this->dbcon->select('previous_year_feegeneration', 'sum(TOTAL)TOTAL', "ADM_NO='$adm_no'");
 		$pre_dues_amt = $pre_dues[0]->TOTAL;
-		if($pre_dues_amt == null){
+		if ($pre_dues_amt == null) {
 			$pre_dues1 = 0;
-		}else{
+		} else {
 			$pre_dues1 = $pre_dues_amt;
 		}
-		
-		$cnt=count($stu_data);
-		$ar_data = array($cnt,$pre_dues1,$stu_id);
+
+		$cnt = count($stu_data);
+		$ar_data = array($cnt, $pre_dues1, $stu_id);
 		echo json_encode($ar_data);
 	}
 
 	public function show_student()
 	{
-		$details = $this->dbcon->select('student','ADM_NO,FIRST_NM,DISP_CLASS,DISP_SEC,FATHER_NM,MOTHER_NM',"Student_Status='ACTIVE'");
+		$details = $this->dbcon->select('student', 'ADM_NO,FIRST_NM,DISP_CLASS,DISP_SEC,FATHER_NM,MOTHER_NM', "Student_Status='ACTIVE'");
 		echo json_encode($details);
 	}
 
-	public function stu_data_old()
-	{
-		$adm_no = $this->input->post('val');
-		$User_Id = $this->session->userdata('user_id');
-		
-		$stu_data = $this->dbcon->monthly_collection($adm_no);
-		$ward = $stu_data[0]->HOUSENAME;
-		if($ward == "NONE" || $ward == "BACHPAN"){
-			$master = $this->dbcon->select('master','*',"User_ID='$User_Id' AND Collection_Type='3'");
-		}else{
-			$master = $this->dbcon->select('master','*',"User_ID='$User_Id' AND Collection_Type='1'");
-		}
-		$array = array(
-			'student_data' => $stu_data,
-			'master' => $master
-		);
-		$this->load->view('Fee_collection/month_collection_data',$array);	
-	}
 	
+
 	public function stu_data()
 	{
 		$adm_no = $this->input->post('val');
 		$User_Id = $this->session->userdata('user_id');
-
 		$stu_data = $this->dbcon->monthly_collection($adm_no);
 		$ward = $stu_data[0]->HOUSENAME;
 		if ($ward == "NONE" || $ward == "BACHPAN") {
@@ -78,218 +62,9 @@ class Monthly_collection extends MY_controller{
 		} else {
 			$master = $this->dbcon->select('master', '*', "User_ID='$User_Id' AND Collection_Type='1'");
 		}
-
-		//----------- GET MONTH PAY DETAILS START-------------//
-		$apr_fee = $stu_data[0]->APR_FEE;
-		$may_fee = $stu_data[0]->MAY_FEE;
-		$jun_fee = $stu_data[0]->JUNE_FEE;
-		$jul_fee = $stu_data[0]->JULY_FEE;
-		$aug_fee = $stu_data[0]->AUG_FEE;
-		$sep_fee = $stu_data[0]->SEP_FEE;
-		$oct_fee = $stu_data[0]->OCT_FEE;
-		$nov_fee = $stu_data[0]->NOV_FEE;
-		$dec_fee = $stu_data[0]->DEC_FEE;
-		$jan_fee = $stu_data[0]->JAN_FEE;
-		$feb_fee = $stu_data[0]->FEB_FEE;
-		$mar_fee = $stu_data[0]->MAR_FEE;
-		//----------- GET MONTH PAY DETAILS END-------------//
-
-
-		//----------- CHECK MONTH DUES DETAILS -------------//
-		if($apr_fee == 'NOT ADMITTED'){ $apr_check = 2; }else{
-		if ($apr_fee != 'N/A' && $apr_fee != '' && ($may_fee == 'N/A' || $may_fee == '')) {
-			$apr_check = $this->check_dues($adm_no,'APR');
-		}else{
-			if($may_fee != 'N/A' && $may_fee != ''){
-				$apr_check = 2;
-			}else{
-				$apr_check = 1;
-			}
-		}
-		}
-
-		if($may_fee == 'NOT ADMITTED'){ $may_check = 2; }else{
-		if ($may_fee != 'N/A' && $may_fee != '' && ($jun_fee == 'N/A' || $jun_fee == '')) {
-			$may_check = $this->check_dues($adm_no,'MAY');
-		}else{
-			if($jun_fee != 'N/A' && $jun_fee != ''){
-				$may_check = 2;
-			}else{
-				$may_check = 1;
-			}
-		}
-		}
-		
-
-		if($jun_fee == 'NOT ADMITTED'){ $jun_check = 2; }else{
-		if ($jun_fee != 'N/A' && $jun_fee != '' && ($jul_fee == 'N/A' || $jul_fee == '')) {
-			$jun_check = $this->check_dues($adm_no,'JUN');
-		}else{
-			if($jul_fee != 'N/A' && $jul_fee != ''){
-				$jun_check = 2;
-			}else{
-				$jun_check = 1;
-			}
-		}
-		}
-		
-
-		if($jul_fee == 'NOT ADMITTED'){ $jul_check = 2; }else{
-		if ($jul_fee != 'N/A' && $jul_fee != '' && ($aug_fee == 'N/A' || $aug_fee == '')) {
-			$jul_check = $this->check_dues($adm_no,'JUL');
-		}else{
-			if($aug_fee != 'N/A' && $aug_fee != ''){
-				$jul_check = 2;
-			}else{
-				$jul_check = 1;
-			}
-		}
-		}
-		
-
-		if($aug_fee == 'NOT ADMITTED'){ $aug_check = 2; }else{
-		if ($aug_fee != 'N/A' && $aug_fee != '' && ($sep_fee == 'N/A' || $sep_fee == '')) {
-			$aug_check = $this->check_dues($adm_no,'AUG');
-		}else{
-			if($sep_fee != 'N/A' && $sep_fee != ''){
-				$aug_check = 2;
-			}else{
-				$aug_check = 1;
-			}
-		}
-		}
-		
-		
-		if($sep_fee == 'NOT ADMITTED'){ $sep_check = 2; }else{
-		if ($sep_fee != 'N/A' && $sep_fee != '' && ($oct_fee == 'N/A' || $oct_fee == '')) {
-			$sep_check = $this->check_dues($adm_no,'SEP');
-		}else{
-			if($oct_fee != 'N/A' && $oct_fee != ''){
-				$sep_check = 2;
-			}else{
-				$sep_check = 1;
-			}
-		}
-		}
-		
-			
-		if($oct_fee == 'NOT ADMITTED'){ $oct_check = 2; }else{
-		if ($oct_fee != 'N/A' && $oct_fee != '' && ($nov_fee == 'N/A' || $nov_fee == '')) {
-			$oct_check = $this->check_dues($adm_no,'OCT');
-		}else{
-			if($nov_fee != 'N/A' && $nov_fee != ''){
-				$oct_check = 2;
-			}else{
-				$oct_check = 1;
-			}
-		}
-		}
-
-		if($nov_fee == 'NOT ADMITTED'){ $nov_check = 2; }else{
-		if ($nov_fee != 'N/A' && $nov_fee != '' && ($dec_fee == 'N/A' || $dec_fee == '')) {
-			$nov_check = $this->check_dues($adm_no,'NOV');
-		}else{
-			if($dec_fee != 'N/A' && $dec_fee != ''){
-				$nov_check = 2;
-			}else{
-				$nov_check = 1;
-			}
-		}
-		}
-		
-		if($dec_fee == 'NOT ADMITTED'){ $dec_check = 2; }else{
-		if ($dec_fee != 'N/A' && $dec_fee != '' && ($jan_fee == 'N/A' || $jan_fee == '')) {
-			$dec_check = $this->check_dues($adm_no,'DEC');
-		}else{
-			if($jan_fee != 'N/A' && $jan_fee != ''){
-				$dec_check = 2;
-			}else{
-				$dec_check = 1;
-			}
-		}
-		}
-
-		
-		if($jan_fee == 'NOT ADMITTED'){ $jan_check = 2; }else{
-		if ($jan_fee != 'N/A' && $jan_fee != '' && ($feb_fee == 'N/A' || $feb_fee == '')) {
-			$jan_check = $this->check_dues($adm_no,'JAN');
-		}else{
-			if($feb_fee != 'N/A' && $feb_fee != ''){
-				$jan_check = 2;
-			}else{
-				$jan_check = 1;
-			}
-		}
-		}
-
-		
-		if($feb_fee == 'NOT ADMITTED'){ $feb_check = 2; }else{
-		if ($feb_fee != 'N/A' && $feb_fee != '' && ($mar_fee == 'N/A' || $mar_fee == '')) {
-			$feb_check = $this->check_dues($adm_no,'FEB');
-		}else{
-			if($mar_fee != 'N/A' && $mar_fee != ''){
-				$feb_check = 2;
-			}else{
-				$feb_check = 1;
-			}
-		}
-		}
-
-		if ($mar_fee != 'N/A' && $mar_fee != '') {
-			$mar_check = $this->check_dues($adm_no,'MAR');
-		}else{
-			$mar_check = 1;
-		}
-
-
-		//---ADD APPLICABLE MONTH-----//
-		$month_app = array();
-
-		if($apr_check == 1){
-			$month_app[] = 'APR';
-		}
-		if($may_check == 1){
-			$month_app[] = 'MAY';
-		}
-		if($jun_check == 1){
-			$month_app[] = 'JUN';
-		}
-		if($jul_check == 1){
-			$month_app[] = 'JUL';
-		}
-		if($aug_check == 1){
-			$month_app[] = 'AUG';
-		}
-		if($sep_check == 1){
-			$month_app[] = 'SEP';
-		}
-		if($oct_check == 1){
-			$month_app[] = 'OCT';
-		}
-		if($nov_check == 1){
-			$month_app[] = 'NOV';
-		}
-		if($dec_check == 1){
-			$month_app[] = 'DEC';
-		}
-		if($jan_check == 1){
-			$month_app[] = 'JAN';
-		}
-		if($feb_check == 1){
-			$month_app[] = 'FEB';
-		}
-		if($mar_check == 1){
-			$month_app[] = 'MAR';
-		}
-
-		
-
-
-
 		$array = array(
 			'student_data' => $stu_data,
-			'master' => $master,
-			'month_app' => $month_app
+			'master' => $master
 		);
 		$this->load->view('Fee_collection/month_collection_data', $array);
 	}
@@ -297,16 +72,16 @@ class Monthly_collection extends MY_controller{
 	public function showledger_monthly_collection()
 	{
 		$adm = $this->input->post('adm_no');
-		$std_ldgr = $this->dbcon->select('daycoll','*',"ADM_NO='$adm'");
+		$std_ldgr = $this->dbcon->select('daycoll', '*', "ADM_NO='$adm'");
 		echo json_encode($std_ldgr);
 	}
-	
+
 	public function check_dues($adm_no, $month_nm)
 	{
 
 		$student_data = $this->farheen->select('student', '*', "ADM_NO='$adm_no'");
 		$session 	  = $this->farheen->select('session_master', '*', "Active_Status='1'");
-		
+
 		if (isset($student_data)) {
 			$admission_no = $student_data[0]->ADM_NO;
 			$emp_ward     = $student_data[0]->EMP_WARD;
@@ -341,7 +116,7 @@ class Monthly_collection extends MY_controller{
 
 		$month = $this->farheen->getmonthno($month_nm);
 
-		
+
 
 		for ($i = 1; $i <= 25; $i++) {
 			$t = 0;
@@ -1105,7 +880,7 @@ class Monthly_collection extends MY_controller{
 			}
 		}
 
-		
+
 
 		for ($i = 1; $i <= 25; $i++) {
 			"feehead" . $i . "->" . $final_amount[$i] . "<br/>";
@@ -1141,21 +916,21 @@ class Monthly_collection extends MY_controller{
 		$tot_amt24 = ($final_amount[24] - $data['totFee24']);
 		$tot_amt25 = ($final_amount[25] - $data['totFee25']);
 
-// $total_amount = (($tot_amt1 < 0) ? 0 : $tot_amt1) + (($tot_amt2 < 0) ? 0 : $tot_amt2) + (($tot_amt3 < 0) ? 0 : $tot_amt3) + (($tot_amt4 < 0) ? 0 : $tot_amt4) + (($tot_amt5 < 0) ? 0 : $tot_amt5) + (($tot_amt6 < 0) ? 0 : $tot_amt6) + (($tot_amt7 < 0) ? 0 : $tot_amt7) + (($tot_amt8 < 0) ? 0 : $tot_amt8) + (($tot_amt9 < 0) ? 0 : $tot_amt9) + (($tot_amt10 < 0) ? 0 : $tot_amt10) + (($tot_amt11 < 0) ? 0 : $tot_amt11) + (($tot_amt12 < 0) ? 0 : $tot_amt12) + (($tot_amt13 < 0) ? 0 : $tot_amt13) + (($tot_amt14 < 0) ? 0 : $tot_amt14) + (($tot_amt15 < 0) ? 0 : $tot_amt15) + (($tot_amt16 < 0) ? 0 : $tot_amt16) + (($tot_amt17 < 0) ? 0 : $tot_amt17) + (($tot_amt18 < 0) ? 0 : $tot_amt18) + (($tot_amt19 < 0) ? 0 : $tot_amt19) + (($tot_amt20 < 0) ? 0 : $tot_amt20) + (($tot_amt21 < 0) ? 0 : $tot_amt21) + (($tot_amt22 < 0) ? 0 : $tot_amt22) + (($tot_amt23 < 0) ? 0 : $tot_amt23) + (($tot_amt24 < 0) ? 0 : $tot_amt24) + (($tot_amt25 < 0) ? 0 : $tot_amt25);
+		// $total_amount = (($tot_amt1 < 0) ? 0 : $tot_amt1) + (($tot_amt2 < 0) ? 0 : $tot_amt2) + (($tot_amt3 < 0) ? 0 : $tot_amt3) + (($tot_amt4 < 0) ? 0 : $tot_amt4) + (($tot_amt5 < 0) ? 0 : $tot_amt5) + (($tot_amt6 < 0) ? 0 : $tot_amt6) + (($tot_amt7 < 0) ? 0 : $tot_amt7) + (($tot_amt8 < 0) ? 0 : $tot_amt8) + (($tot_amt9 < 0) ? 0 : $tot_amt9) + (($tot_amt10 < 0) ? 0 : $tot_amt10) + (($tot_amt11 < 0) ? 0 : $tot_amt11) + (($tot_amt12 < 0) ? 0 : $tot_amt12) + (($tot_amt13 < 0) ? 0 : $tot_amt13) + (($tot_amt14 < 0) ? 0 : $tot_amt14) + (($tot_amt15 < 0) ? 0 : $tot_amt15) + (($tot_amt16 < 0) ? 0 : $tot_amt16) + (($tot_amt17 < 0) ? 0 : $tot_amt17) + (($tot_amt18 < 0) ? 0 : $tot_amt18) + (($tot_amt19 < 0) ? 0 : $tot_amt19) + (($tot_amt20 < 0) ? 0 : $tot_amt20) + (($tot_amt21 < 0) ? 0 : $tot_amt21) + (($tot_amt22 < 0) ? 0 : $tot_amt22) + (($tot_amt23 < 0) ? 0 : $tot_amt23) + (($tot_amt24 < 0) ? 0 : $tot_amt24) + (($tot_amt25 < 0) ? 0 : $tot_amt25);
 
-		$total_amount = (($tot_amt1 < 0) ? 0 : $tot_amt1) + (($tot_amt2 < 0) ? 0 : $tot_amt2) + (($tot_amt3 < 0) ? 0 : $tot_amt3) + (($tot_amt4 < 0) ? 0 : $tot_amt4) + (($tot_amt5 < 0) ? 0 : $tot_amt5) + (($tot_amt6 < 0) ? 0 : $tot_amt6) + (($tot_amt7 < 0) ? 0 : $tot_amt7) ;
+		$total_amount = (($tot_amt1 < 0) ? 0 : $tot_amt1) + (($tot_amt2 < 0) ? 0 : $tot_amt2) + (($tot_amt3 < 0) ? 0 : $tot_amt3) + (($tot_amt4 < 0) ? 0 : $tot_amt4) + (($tot_amt5 < 0) ? 0 : $tot_amt5) + (($tot_amt6 < 0) ? 0 : $tot_amt6) + (($tot_amt7 < 0) ? 0 : $tot_amt7);
 
 
-		if($total_amount > 0){
+		if ($total_amount > 0) {
 			return 1;
-		}else{
+		} else {
 			return 2;
 		}
 	}
-	
+
 	public function partial($adm)
 	{
-		
+
 		$dayCallData = $this->alam->selectA('daycoll', 'sum(Fee1)Fee1,sum(Fee2)Fee2,sum(Fee3)Fee3,sum(Fee4)Fee4,sum(Fee5)Fee5,sum(Fee6)Fee6,sum(Fee7)Fee7,sum(Fee8)Fee8,sum(Fee9)Fee9,sum(Fee10)Fee10,sum(Fee11)Fee11,sum(Fee12)Fee12,sum(Fee13)Fee13,sum(Fee14)Fee14,sum(Fee15)Fee15,sum(Fee16)Fee16,sum(Fee17)Fee17,sum(Fee18)Fee18,sum(Fee19)Fee19,sum(Fee20)Fee20,sum(Fee21)Fee21,sum(Fee22)Fee22,sum(Fee23)Fee23,sum(Fee24)Fee24,sum(Fee25)Fee25', "ADM_NO='$adm'");
 
 		$dFee1  = $dayCallData[0]['Fee1'];
@@ -1247,5 +1022,4 @@ class Monthly_collection extends MY_controller{
 
 		return $data;
 	}
-
 }

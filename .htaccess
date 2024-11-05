@@ -10,7 +10,7 @@
     RewriteEngine On
 
     # Set the RewriteBase to the subdirectory
-    RewriteBase /play_erp/
+    RewriteBase /play_erp1/
 
     # Redirect to index.php if the requested file or directory doesn't exist
     RewriteCond %{REQUEST_FILENAME} !-f
